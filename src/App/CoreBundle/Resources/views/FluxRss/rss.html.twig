@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="widget">
+            <ul class="options-bar" data-filter="">
+            
+        </ul>
+    </div>
+   
+    <div class="widget">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <h6>{{ title }}</h6>
+                <a class="btn btn-success pull-right" href="{{ path('add_article') }}" title="Ajouter un flux rss "><i class="icon-plus"></i>&nbsp; Ajouter flux rss {{ dates }} </a>
+            </div>
+        </div>
+        
+        <div>
+
+        <div class="widget" data-role="wrapper">
+            {% if articles is not empty %}
+                
+                <div class="table-overflow">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Titre</th>
+                                                <th>Source</th>
+                                                <th>Contenu</th>
+                                                <th>Auteur</th>
+                                                <th>Date</th>
+                                                <th>Categorie</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for article in articles %}
+
+                                            <tr>
+                                                <td style="width:180px">{{ article.titre }}</td>
+                                               {% if article.source is empty %}
+                                                <td>Anonyme</td>
+                                               {% else %}
+                                                <td>{{ article.source }}</td>        
+                                               {%  endif %}
+                                                <td style="width:150px">{{ article.contenu }}</td>
+                                               {% if article.auteur is empty %}
+                                                  <td>Anonyme</td>             
+                                               {% else %}
+                                                  <td>{{ article.source }}</td>      
+                                               {%  endif %}
+                                                 <td>{{ article.auteur }}</td>
+                                                <td style="width:80px">{{ article.datePublication }}</td>
+                                                <td>{{ article.auteur }}</td>
+                                                <td></td>
+                                                {#<td> sport </td>#}
+                                                
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+               
+        {% else %}
+                <div class="well body">
+                        Aucun flux rss n'est enregistré !
+                </div>
+{% endif %}
+
+        </div>
+    </div>
+    </div>
+{% endblock %}

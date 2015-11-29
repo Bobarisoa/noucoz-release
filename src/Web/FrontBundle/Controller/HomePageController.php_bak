@@ -1,0 +1,206 @@
+<?php
+
+namespace Web\FrontBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Hip\MandrillBundle\Message;
+use Hip\MandrillBundle\Dispatcher;
+use Doctrine\Common\Util\Debug;
+use Web\FrontBundle\Entity\Country;
+use Web\FrontBundle\Entity\Articles;
+
+
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+use App\CoreBundle\Entity\Utilisateur;
+use App\CoreBundle\Form\UtilisateurType;
+
+class HomePageController extends Controller
+{
+	public function checkDomainsValidity(Request $request){
+		
+		$baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
+		//var_dump($baseurl);
+		switch(true){
+			case ($baseurl == 'http://agente3w.com'):
+				return 'core_dashboard';	
+			break;
+		}
+		
+		return NULL;
+	}
+	
+
+    public function indexAction(Request $request)
+    {
+    	
+
+	    // parameters to template
+	   
+
+
+		$countryId = (integer) $request->query->get('country',1);
+
+		$em = $this->getDoctrine()->getManager();
+		$countries = $em->getRepository('WebFrontBundle:Country')->findAll();
+		$classeArticle = $em->getRepository('AppCoreBundle:TopArticle')->findBy(array('actif' => 1));
+		
+
+		//$articles = $em->getRepository('WebFrontBundle:Articles')->findBy(array(
+		//	'country'=>$countryId,
+		//	'classe' => $classeArticle));																;
+		/**
+		*	systeme de pagination 
+		*/
+
+
+		
+		$em    = $this->get('doctrine.orm.entity_manager');
+	    $dql   = "SELECT a FROM WebFrontBundle:Articles a";
+	    $query = $em->createQuery($dql);
+
+	    $paginator  = $this->get('knp_paginator');
+	    $pagination = $paginator->paginate($query,$request->query->getInt('page', 1) ,12);
+
+		//$query = $em->createQuery('SELECT  p FROM WebFrontBundle:Articles p' )
+		//			->setMaxResults(12)
+		//			->setFirstResult(1);
+		//$articles = $query->getResult();
+		
+		$categorie = $em->getRepository('WebFrontBundle:Categorie')->findAll();
+		
+		/**
+		 * Inscription
+		 */
+		$entity  = new Utilisateur();
+		$form = $this->createForm(new UtilisateurType(), $entity);
+
+		if($request->getMethod() == 'POST') {
+			$form->bind($request);
+
+			if ($form->isValid()) {
+
+				$factory = $this->get('security.encoder_factory');
+				$encoder = $factory->getEncoder($entity);
+
+				// Dont forget salt, common in security process
+				//$entity->setSalt(md5(time()));
+				//$entity->setPassword($encoder->encodePassword($entity->getPassword(), $entity->getSalt()));
+				$entity->setPassword(md5($entity->getPassword()));
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($entity);
+				$em->flush();
+
+				$this->get('session')->getFlashBag()->add(
+					'success',
+					'Le <strong>' . $entity->getFirstname() . '&nbsp;' . $entity->getLastname() . '</strong> a bien été crée !'
+				);
+
+				return $this->redirect($this->generateUrl('login'));
+			}
+		}
+
+		/*return $this->render('WebFrontBundle:Inscription:index.html.twig', array(
+			'headline' => 'Membres',
+			'title'	   => 'Ajouter un membre',
+			'entity'   => $entity,
+			'form'	   => $form->createView(),
+		)); */
+
+        return $this->render('WebFrontBundle:HomePage:index.html.twig', array(
+			'countries' => $countries,
+			
+			'headline' => 'Membres',
+			'title'	   => 'Ajouter un membre',
+			'entity'   => $entity,
+			'pagination' => $pagination,
+			'categorie' => $categorie,
+			'form'	   => $form->createView(),
+		));
+    }
+
+    
+    public function pageNotFoundAction()
+    {
+        //throw new NotFoundHttpException();
+        throw $this->createNotFoundException();
+    }
+
+    public function topNewsAction()
+    {
+    	return $this->render('WebFrontBundle:HomePage:news.html.twig');
+    }
+
+    public function plusLusAction()
+    {
+    	return $this->render('WebFrontBundle:HomePage:plus.html.twig');
+    }
+
+    public function actualiteSportifAction(Request $request){
+    	$em    = $this->get('doctrine.orm.entity_manager');
+	    $dql   = "SELECT p FROM WebFrontBundle:Articles p WHERE p.category = 1";
+	    $query = $em->createQuery($dql);
+    	$paginator  = $this->get('knp_paginator');
+	    $pagination = $paginator->paginate($query,$request->query->getInt('page', 1) ,12);
+    	return $this->render('WebFrontBundle:HomePage:actualite.html.twig'
+    	,array('pagination' => $pagination));	
+    }
+	/**
+	 * polling db for new articles
+	 */
+	public function articlePollingAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$query = $em->createQuery('SELECT c.id AS cat, COUNT(a.id) AS nb_article FROM Web\FrontBundle\Entity\Articles a JOIN a.category c GROUP BY c.id');
+		$result = $query->getResult();
+		$json = json_encode($result);
+
+		$response = new Response();
+		$response->headers->set('Content-type', 'Application/json');
+		$response->setContent($json);
+
+		return $response;
+	}
+
+	public function posterArticleAction(Request $request)
+    {
+            $advert = new Articles();
+            $formBuilder = $this->get('form.factory')->createBuilder('form', $advert);
+            $formBuilder->add('contenu', 'textarea', 
+            	array('required' => false,'attr' => array('class' => 'ckeditor')));
+            	/*->add('contenu', 'ckeditor', array (
+			    'label'             => 'Contenu',
+			    'config_name'       => 'my_custom_config',
+			    'config' => array(
+			    'language'    => 'fr'),
+			    */
+				
+            $form = $formBuilder->getForm();
+            return $this->render('WebFrontBundle:HomePage:poster.html.twig', array(
+            'form' => $form->createView(),
+         )); 			   
+    }
+    
+
+    public function posterAction(Request $request){
+    		
+    		$titre = $request->get('titre_txt');
+    		$source = $request->get('source_txt');
+    		$categorie = $request->get('categorie_txt');
+    		$auteur = $request->get('auteur_txt');
+    		$contenu = $request->get('textarea');
+    		echo $contenu;
+    		
+    		
+    		/*$date = date('d M Y');
+	    	$conn = $this->get('database_connection');
+	    	$add = $conn->executeUpdate("INSERT INTO article_noucoze(classe_id,country_id,category_id,titre,source,contenu,auteur,photo,notification,datePublication)VALUES
+	    	(1, 1, '".$categorie."', '".$titre."', '".$source."', '".$contenu."', '".$auteur."', 'photo', 'notification', '".$date."')");
+	    	if($add){
+	    		return $this->render('WebFrontBundle:HomePage:liste.html.twig');
+	    	}
+			*/
+    }
+}

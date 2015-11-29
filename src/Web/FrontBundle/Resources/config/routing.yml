@@ -1,0 +1,33 @@
+#web_front_homepage:
+#    path:     /hello/{name}
+#    defaults: { _controller: WebFrontBundle:Default:index }
+    
+web_front_homepage:
+    resource: "@WebFrontBundle/Resources/config/routing/homepage.yml"
+
+front_contact:
+    resource: "@WebFrontBundle/Resources/config/routing/contact.yml"
+    
+front_blog:
+    resource: "@WebFrontBundle/Resources/config/routing/blog.yml"
+    
+front_inscription:
+    resource: "@WebFrontBundle/Resources/config/routing/inscription.yml"
+
+front_membre:
+    resource: "@WebFrontBundle/Resources/config/routing/membre.yml"
+
+article_polling:
+    resource: "@WebFrontBundle/Resources/config/routing/article_polling.yml"
+
+front_categorie:
+    resource: "@WebFrontBundle/Resources/config/routing/categorie.yml"
+    prefix: /categorie
+
+sondage:
+    resource: "@WebFrontBundle/Resources/config/routing/sondage.yml"
+    prefix: /sondage    
+
+
+
+

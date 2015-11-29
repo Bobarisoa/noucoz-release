@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="widget row-fluid">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6 style="text-transform:uppercase">Ajout membre premium</h6>
+                                
+			</div>
+		</div>
+		
+		{% if entities is not empty %}
+			<div class="table-overflow">
+			    <table class="table table-striped">
+			        <thead>
+			            <tr>
+			                <th>Username</th>
+			                <th>Groupe</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+
+			        {% for entity in entities %}
+			            <tr>
+			            <td>
+			            	{{  entity.username }}
+			            </td>
+			                <td>
+			                	{% if  entity.username != 'oct15' %}
+			                		 {% if entity.premium == 'premium' %}
+			                			<button disabled style="border:1px solid #000;width:81px" class="btn-success"><i class="icon-ok"></i> Premium</button> 	
+			                		 {% else %}
+                                		<a href="{{ entity.username }}"><button type="submit" style="width:81px" id="premium">Premium</button></a>
+                                	{% endif %}
+                                {% else %}
+                                <button disabled style="width:81px">Admin</button>
+                                {% endif %}
+
+			                </td>
+			            </tr>
+			        {% endfor %}
+			        </tbody>
+			    </table>
+			</div>
+	    {% else %}
+	    	<div class="well body">
+	    		Aucun membre n'est enregistré !
+			</div>
+	    {% endif %}
+	</div>
+	
+{% endblock %}
+
+

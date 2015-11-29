@@ -1,0 +1,423 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    
+
+    <div id="wrapper">
+	    <div class="cd-user-modal" style="z-index: 50;"> <!-- this is the entire modal form, including the background -->
+		    <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+			    <ul class="cd-switcher" style="list-style: none; margin-left: -40px">
+				    <li><a href="#0"></a></li>
+				    <li><a href="#0">Inscription</a></li>
+			    </ul>
+
+			<div id="cd-login"> <!-- log in form -->
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Erreur</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Mot de passe</label>
+						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Mot de passe">
+						<a href="#0" class="hide-password">Cacher</a>
+						<span class="cd-error-message">Erreur</span>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">Se souvenir de moi</label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="Login">
+					</p>
+				</form>
+
+				<p class="cd-form-bottom-message"><a href="#0">Mot de passe oublié?</a></p>
+				<!-- <a href="#0" class="cd-close-form">Close</a> -->
+			</div> <!-- cd-login -->
+
+			<!--<div class="container">-->
+				<div id="cd-signup"> <!-- sign up form -->
+					<div class="alerts">
+						{% for type, flashMessages in app.session.flashbag.all() %}
+							{% for flashMessage in flashMessages %}
+								<div class="alert widget alert-{{ type }} fade in">
+										<button type="button" class="close" data-dismiss="alert">&times;</button>
+									{{ flashMessage|raw }}
+								</div>
+							{% endfor %}
+						{% endfor %}
+						</div>
+						{% form_theme form 'bootstrap_3_layout.html.twig' %}
+						<form action="{{ path('homepage') }}" method="post" {{ form_enctype(form) }}>
+							{{ form_widget(form) }}
+							<div class="">
+									<div class="">
+											<button type="submit" class="btn btn-success">Ajouter</button>
+									</div>
+							</div>
+						</form>
+
+					<!-- <a href="#0" class="cd-close-form">Close</a> -->
+				</div> <!-- cd-signup -->
+			<!--</div>-->
+
+			<div id="cd-reset-password"> <!-- reset password form -->
+				<p class="cd-form-message">Mot de passe oublié? Un mot de passe vous sera envoyé sur l'adresse e-mail ci-dessous.</p>
+
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="reset-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="Réinitialiser mot de passe">
+					</p>
+				</form>
+
+				<p class="cd-form-bottom-message"><a href="#0">Revenir à la connexion</a></p>
+			</div> <!-- cd-reset-password -->
+			<a href="#0" class="cd-close-form">Close</a>
+		</div> <!-- cd-user-modal-container -->
+	</div> <!-- cd-user-modal -->
+
+		<div id="header">
+			<div class="menu-top-left">
+				<ul id="menu-vertical">
+					<li class="dropdown">
+						<a style="color: #000;font-size:1em" href="#" class="dropdown-toggle" data-toggle="dropdown">Pays <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{% for country in countries %}
+							<li><a href="{{ path('homepage', {'country':country.id}) }}">{{ country.name }}</a></li>
+							{% endfor %}
+						</ul>
+					</li><!--
+				 --><li class="dropdown">
+				 		<a style="color: #000;font-size:1em" href="#" class="dropdown-toggle" data-toggle="dropdown">Langue <!--<span class="caret"></span>--></a>
+						{#<ul class="dropdown-menu">
+							<li><a href="#">Francais</a></li>
+							<li><a href="#">Anglais</a></li>
+						</ul>#}
+					</li>
+				</ul>
+			</div>
+
+			<div class="menu-top-right" style="margin-right:10em;">
+				<ul>
+					<li><a href="{{ path('login')}}" title="Connexion" style="color:#000;font-size:1em;text-transform:uppercase;">Se connecter </a></li>
+					<li id="link-inscription" ><a  href="#0" title="Inscription" style="color:#000;font-size:1em;text-transform:uppercase;" class="cd-signup">S'inscrire</a></li>
+
+				</ul>
+			</div>
+
+			<div class="header-center-logo" style="margin-left:14em">
+				<div class="logo">
+						<a href="#"><img src="{{ asset('template/img/logo.jpg') }}" /></a>
+				</div>
+				<div class="recherche" >
+					<form action="#" class="form-wrapper cf" style="margin-right:7em;">
+						<div class="form-group">
+							<input type="text" id="search"  placeholder="Rechercher..." >
+						</div>
+					</form>
+				</div>
+			</div>
+		    <nav class="navbar navbar-default navbar-inverse" style="background:#000;border-radius:0px;margin-top:8em">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!--test -->
+                    <div id="navbars" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="{{ path( 'homepage' ) }}" >Accueil <span class="sr-only"></span></a></li>
+                            <li class="dropdown">
+                                <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown">Actualités <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    {% for cat in categorie %}
+                                    <li><a href="" class="">{{ cat.nom }} <span class='menu-actus-{{ cat.id }} notification-bubble pull-right' style="display:none"></span></a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a style="color: #fff" href="#">Images</a></li>
+                            <li><a style="color: #fff" href="#">Vidéo</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+		    </nav>
+	    </div>
+
+        <div id="container">
+            <div class="row">
+                <div class="panel panel-default" style="margin-top: 50px">
+                    <div class="panel-heading"><h3 class="article-title">{{ entities.titre }}</h3></div>
+                    <div class="panel-body article-content">
+                        {#<h3 class="article-title">{{ entities.titre }}</h3>#}
+                        <p class="article-body">{{ entities.contenu }}</p>
+                        <p><a href="#" class="translate-link">Voir la traduction</a></p>
+                        <div id="loading-spinner">&nbsp;</div>
+                        <div  class="translate-result" style="display: none">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-commentaire col-md-6">
+                <h3>Laissez votre commentaire</h3>
+                <div class="container-form well">
+                <form style="margin-bottom:30px" method="post" action="" data-result="list-commentaire" data-type="append">
+                  
+                  <div class="form-group">
+                    <input type="hidden" name="article_id" value="1" required>
+                    <label for="mail">Email address</label>
+                    {{ form_widget(commentaire_form.auteur, {'attr': {'class': 'form-control','style':'width:100%'}}) }}
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Message</label>
+                    {{ form_widget(commentaire_form.contenu, {'attr': {'class': 'textarea','style':'width:100%'}}) }}
+                  </div>
+                  <div id="captcha"></div>
+                  {{ form_widget(commentaire_form.commenter, {'attr': {'class': 'btn btn-default btn-with-captcha',"disabled":""}}) }}
+                </form>
+
+                </div>
+            </div>
+            {#<div class="row">
+                <!-- Alerts -->
+				<div class="alerts">
+				{% for type, flashMessages in app.session.flashbag.all() %}
+				    {% for flashMessage in flashMessages %}
+				        <div class="alert widget alert-{{ type }} fade in">
+				        	<button type="button" class="close" data-dismiss="alert">&times;</button>
+				            {{ flashMessage|raw }}
+				        </div>
+				    {% endfor %}
+				{% endfor %}
+				</div>
+				<!-- /alerts -->
+            </div>#}
+		</div>
+
+
+    </div>
+  </div>
+		<div class="footer">
+			<br/>
+			<ul>
+				<li><a href="#"><img src="{{ asset('template/img/tw.jpg') }}" alt="" /></a></li>
+				<li><a href="#"><img src="{{ asset('template/img/rss.jpg') }}" alt="" /></a></li>
+				<li><a href="#"><img src="{{ asset('template/img/fb.jpg') }}" alt="" /></a></li>
+				<li><a href="#"><img src="{{ asset('template/img/p.jpg') }}" alt="" /></a></li>
+			</ul>
+            <style>
+                .fb-share-button iframe{margin-top: -5px}
+            </style>
+            <div id="fb-root"></div>
+            <div class="fb-share-button" data-href="{{ app.request.getUri }}" data-layout="button_count"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="eiffelcab" data-size="small" data-related="caleb">Tweet</a>
+
+
+
+		</div>
+			<center id="footer"> &copy; 2015 Nucoze</center>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+      var verifyCallback = function(reponse){
+        if(reponse != ""){
+          $('.btn-with-captcha').removeAttr('disabled');
+        }
+      }
+      var onloadCallback = function() {
+        var c = grecaptcha.render('captcha', {
+          'sitekey' : '6LcgIhATAAAAAKlOM2JVF5zY8spaqZKW5OUB4P_U',
+          'theme' : 'light',
+          'callback' : verifyCallback,      
+        });
+      };
+    </script>
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+    <script src="{{ asset('js/vendor/jquery-1.9.1.min.js') }}"></script>
+    <script src="{{ asset('template/js/jquery-litelighter.js') }}"></script>
+    <script src="{{ asset('template/js/jquery-waiting.js') }}"></script>
+    <script>
+        /* Polling database  */
+        $(document).ready(function() {
+
+            /* Translation */
+            $(".translate-link").click(function(){
+                var title = $(".article-title").text();
+                var body = $(".article-body").text();
+
+                $('.translate-link').hide();
+
+                $('#loading-spinner').waiting({
+                    className: 'waiting-nonfluid',
+                    elements: 5,
+                    speed: 200,
+                    fluid: false,
+                    auto: true
+                });
+
+
+
+                console.log(body);
+                $.ajax({
+                    type: 'post',
+                    url: '{{ path('article_translate') }}',
+                    data: {'body': body},
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log('response = ' + JSON.stringify(response));
+                        $('#loading-spinner').waiting('destroy');
+                        $('.translate-result').text(response.translation);
+                        $('.translate-result').show();
+                    }
+                });
+            });
+
+        });
+
+    </script>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+    <style>
+
+
+        .recherche #search{
+            width:250px;
+            border-radius:2px;
+
+        }
+        .navbar-nav  li a {
+            text-transform:uppercase;
+            font-size:1em;
+            font-weight:initial;
+            color:#fff;
+            margin-left:2em;
+
+        }
+
+        .dropdown ul.dropdown-menu{
+            text-transform: uppercase;
+            width: 250px;
+        }
+
+        .dropdown ul.dropdown-menu li a {
+            margin-left: 0;
+        }
+
+
+        /*.navbar .dropdown-menu .menu-item-container a{
+            text-transform:uppercase;
+            font-size:1em;
+            font-weight:initial;
+            color: rgba(43, 43, 43, 1);
+            margin-left:2em;
+            margin-right: 2em;
+            margin-top: 1.5em;
+        }*/
+
+        .notification-bubble {
+            display: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            background-color: #f56c7e;
+            border-radius: 10px;
+        }
+
+        .navbar-nav .active a{
+            margin-left:8.2em;
+        }
+
+        #search:focus{
+            width:400px;
+            background:#fff;
+        }
+        #search {
+            -webkit-transition:0.5s;
+            background:#efefef;
+        }
+
+        .pagination ul li{
+            display:inline-block;
+        }
+
+        #content article p img {
+            width:11.05em;
+        }
+
+        #footer{
+            color:#2e2e2e;
+            font-size:0.7em;
+        }
+
+        .menu-top-left ul li a {
+            text-transform:uppercase;
+            font-size:0.7em;
+            color: #2e2e2e;
+        }
+
+        #menu-vertical > li li a {
+            color: #2e2e2e;
+        }
+        .active {
+            margin-left:2.5em;
+        }
+
+        div #header{
+            height:150px;
+            width:1388px;
+            position:fixed;
+        }
+        .fildariane span a:hover{
+            text-decoration:none;
+        }
+
+        .waiting-nonfluid{ padding: 0; display: inline-block; }
+        .waiting-nonfluid-element{ margin: 0 2px 0 0; background-color: #ccc;
+            width: 10px; height: 20px; display: inline-block;}
+        .waiting-nonfluid-play-0,
+        .waiting-nonfluid-play-1,
+        .waiting-nonfluid-play-2,
+        .waiting-nonfluid-play-3,
+        .waiting-nonfluid-play-4,
+        .waiting-nonfluid-play-5{ background-color: #999; }
+
+        .translate-result {
+            width: 70%;
+            padding: 10px 10px 10px 30px;
+            border: 1px solid #ddd;
+            background-color: rgba(255, 193, 52, 0.65);
+            border-radius: 2px;
+        }
+
+    </style>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="widget row-fluid">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <h6>{{ title }}</h6>
+                {#<a class="btn btn-success pull-right" href="{{ path('commentaire_create') }}" title="Ajouter un commentaire"><i class="icon-plus"></i>&nbsp;Ajouter un commentaire</a>#}
+            </div>
+        </div>
+
+        {% if entities is not empty %}
+            <div class="table-overflow">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Titre article</th>
+                        <th>Auteur comment</th>
+                        <th>Commentaire</th>
+                        <th>Date publication</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td>{{ entity.articles.titre }}</td>
+                            <td>{{ entity.auteur }}</td>
+                            <td>{{ entity.contenu }}</td>
+                            <td>{{ entity.datePub|date }}</td>
+                            <td>
+                                {#<a class="btn btn-info btn-small" href="{{ path('articles_edit', { 'id': entity.id }) }}" title="Modifier"><i class="icon-pencil icon-white"></i>&nbsp;Modifier</a>#}
+                                <a class="btn btn-danger btn-small" data-href="{{ path('commentaire_delete', { 'id': entity.id }) }}" data-toggle="delete-confirm" data-popout="true" title="Etes-vous sûr?" style="cursor: pointer;"><i class="icon-trash icon-white"></i>&nbsp;Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="well body">
+                Aucun pays n'est enregistré !
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

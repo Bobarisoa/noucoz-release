@@ -1,0 +1,5 @@
+frontpage:
+     path:     /{page}/{_locale}
+     defaults: { _controller: WebFrontBundle:Page:read, _locale: %locale% }
+     requirements:
+        _locale: en|fr

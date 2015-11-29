@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Connexion</title>
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" charset="utf-8">
+        <script src="{{ asset('js/vendor/jquery-1.9.1.min.js') }}"></script>
+        <!----><link rel="stylesheet" href="{{ asset('css/login.css') }}" type="text/css" charset="utf-8">
+    </head>
+    <body class="no-background">
+
+		<!-- Content -->
+		<div id="content">	
+			
+			<!-- Form sign-in -->
+			<div class="form-signin">		
+				
+				
+                <div class="row MRB30">
+                    <div class="logoManif">
+                              <img  src="" alt="Logo" />
+                    </div>
+                </div>
+                
+               
+				<form class="form" action="{{ path('connexion_login' ,{ 'user':profil.username }) }}" method="post">
+					<div class="widget row-fluid">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<h6>Connexion</h6>
+							</div>
+						</div>
+						<div class="well">
+							<div class="control-group">
+							    <span class="btn btn-block btn-success">{{ info }}</span>
+								<label for="username">Identifiant</label>
+								<div class="input-prepend input-block-level">
+									<span class="add-on"><i class="icon-user"></i></span>
+									<input type="text" name="_username" id="username" value="" placeholder="Identifiant" required="required" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label for="password">Mot de passe</label>
+								<div class="input-prepend input-block-level">
+									<span class="add-on"><i class="icon-lock"></i></span>
+									<input type="password" value="{{ profil.username }}" name="_password" id="password" placeholder="Mot de passe" required="required" />
+								</div>
+							</div>
+							<div class="control-group">
+								<button class="btn btn-block btn-success" type="submit">Connexion</button>
+								<!-- <a href="{{ path('forget') }}" class="forget">Mot de passe oublié ?</a>-->
+							</div>
+						</div>
+					</div>
+				</form>
+				
+		    </div>
+		    <!-- /form sign-in -->
+		    
+		</div>
+		<!-- /content -->
+		<script>
+		$('#btn').click(function(){
+			var users = $('#username').val();
+			var pass = $('#password').val();
+			 url = '{{ path('user_access',{'user': 'user' }) }}';
+			 url = url.replace("user",users );
+			 console.log(url);
+			 $.ajax({
+                  type:'POST',  
+                  url : url, 
+                  data: {username : users, password : pass } ,
+                  success: function(response) {   
+                   alert(response);
+                  
+                  }, 
+                  error : function(){
+                  //  alert('erreur');
+                  }
+              });
+		});	
+		</script>
+    </body>
+</html>

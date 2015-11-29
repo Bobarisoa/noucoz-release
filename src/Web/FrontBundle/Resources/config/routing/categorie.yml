@@ -1,0 +1,11 @@
+categorie:
+    path: /
+    defaults: { _controller: "WebFrontBundle:Categorie:index" }
+
+categorie_liste:
+    path: /liste
+    defaults: { _controller: "WebFrontBundle:Categorie:liste" }
+
+categorie_count:
+    path: /count
+    defaults: { _controller: "WebFrontBundle:Categorie:count" }

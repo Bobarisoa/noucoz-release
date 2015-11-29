@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<h5 class="widget-name">
+		<i class="icon-reorder"></i>Filtres
+	</h5>
+	<div class="widget">
+                        <ul class="options-bar" data-filter="{{ path('utilisateur_show_historique', {'id': id}) }}">
+			<li style="width: auto">
+				<div class="bar-select pull-left">
+					<span>Type :</span>
+					<select name="type" data-trigger="change" class="select2">
+						<option selected="selected" value="tous">Tous les types</option>
+						{% for entity in types %}
+							<option value="{{ entity.type }}">{{ entity.type }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="bar-select pull-left">
+					<span>Déscription :</span>
+					<select name="description" data-trigger="change" class="select2">
+						<option selected="selected" value="tous">Tous les déscriptions</option>
+						{% for entity in liste %}
+							<option value="{{ entity.description }}">{{ entity.description }}</option>
+						{% endfor %}
+					</select>
+				</div>
+                                <div class="bar-select pull-left">
+                                        <span>Du :</span>
+                                        <input name="DateDu" data-trigger="change" class="datepicker" placeholder="Du" />
+                                </div>
+                                <div class="bar-select pull-left">
+                                        <span>Au :</span>
+                                        <input name="DateAu" data-trigger="change" class="datepicker" placeholder="Au" />
+                                </div>
+				<div class="loading pull-left" style="display: none;">
+                    <span>Chargement...</span>
+                    <img src="{{ asset('img/elements/loaders/6s.gif') }}" alt="Chargement...">
+                </div>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="widget">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6>{{ title }}</h6>
+			</div>
+		</div>
+		
+		<div>
+		<!--<h5 class="widget-name">
+			<i class="icon-th"></i>Résultats
+		</h5>-->
+		<div class="widget" data-role="wrapper">
+			{{ render(controller('AppCoreBundle:Utilisateur:showHistorique', {'id': id})) }}
+		</div>
+	</div>
+	</div>
+{% endblock %}

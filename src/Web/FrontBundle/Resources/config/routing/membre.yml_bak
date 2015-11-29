@@ -1,0 +1,76 @@
+espace_membre:
+    path:     /user
+    defaults: { _controller: WebFrontBundle:Membre:index}
+
+membre:    
+    path:     /membre
+    defaults: { _controller: WebFrontBundle:Default:membre }
+
+liste: 
+    path:     /liste
+    defaults:  { _controller: WebFrontBundle:Membre:liste }   
+
+ajouter: 
+    path:     /ajouter/{id}
+    defaults:  { _controller: WebFrontBundle:Membre:ajouter }  
+
+poursuivre: 
+    path:     /poursuivre/{id}     
+    defaults: { _controller: WebFrontBundle:Membre:poursuivre }
+
+profil-membre:
+    path:     /profil/{user}
+    defaults: { _controller:WebFrontBundle:Membre:profil }
+
+deconnexion:
+    path:    /deconnexion
+    defaults:  { _controller:WebFrontBundle:Membre:deconnexion }
+
+update_profil: 
+    path:    /profil/modifier/{user}
+    defaults:  { _controller:WebFrontBundle:Membre:modifier }
+
+confidentialite: 
+    path:    /confidentialite
+    defaults: { _controller:WebFrontBundle:Membre:confidentialite }
+
+demande_confidentialite:
+    path:   /confidentialite/{user}
+    defaults: { _controller:WebFrontBundle:Membre:updateConfidentialite }
+
+publier-article:
+    path:   /{user}/publier-article
+    defaults: { _controller:WebFrontBundle:Membre:publierArticle }
+
+brouillons-article: 
+    path:   /{user}/brouillons-article
+    defaults: { _controller:WebFrontBundle:Membre:brouillonsArticle }
+
+poster:
+      path:   /{user}/poster-article
+      defaults: { _controller: WebFrontBundle:Membre:posterArticle }
+
+posterArticles: 
+      path:   /{user}/enregistrer-article
+      defaults: { _controller: WebFrontBundle:Membre:poster } 
+
+publierArticles:
+      path:  /{user}/publier/{id}
+      defaults: { _controller: WebFrontBundle:Membre:updatePublication }   
+
+home:
+      path:   /membre/{user}
+      defaults:  { _controller: WebFrontBundle:Membre:acceuilPage }         
+
+
+message:      
+      path:    /{user}/message
+      defaults:  { _controller: WebFrontBundle:HomePage:Message }
+
+liste_msg:
+      path:    /{user}/message/liste
+      defaults: { _controller: WebFrontBundle:HomePage:MessageListe }
+
+nouveau_msg:
+      path:    /{user}/message/nouveau
+      defaults: { _controller: WebFrontBundle:HomePage:NouveauMessage }      

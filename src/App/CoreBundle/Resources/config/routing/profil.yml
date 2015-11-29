@@ -1,0 +1,3 @@
+profil:
+    pattern:  /profil
+    defaults: { _controller: "AppCoreBundle:Profil:edit" }

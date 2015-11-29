@@ -1,0 +1,6 @@
+contact:
+     path:     /contact
+     defaults: { _controller: WebFrontBundle:Contact:index}
+     
+  
+     

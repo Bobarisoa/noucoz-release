@@ -1,0 +1,6 @@
+blog:
+     path:     /blog
+     defaults: { _controller: WebFrontBundle:Blog:index}
+     
+  
+     

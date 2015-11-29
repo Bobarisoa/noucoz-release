@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="widget row-fluid">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <h6>{{ title }}</h6>
+                {#<a class="btn btn-success pull-right" href="{{ path('bloc_create') }}" title="Ajouter un critère"><i class="icon-plus"></i>&nbsp;Ajouter un critère</a>#}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+        {% if entities is not empty %}
+            <form role="form" action="{{ path('bloc') }}" method="post">
+                {% for entity in entities %}
+                    {% if entity.actif %}
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" value="{{ entity.id }}" checked>{{ entity.titre }}</label>
+                        </div>
+                    {% else %}
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" value="{{ entity.id }}">{{ entity.titre }}</label>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div style="margin: 30px">
+                    <button type="submit" class="btn btn-danger">Valider</button>
+                    <p class="help-block">Validez si vous avez un autre choix</p>
+                </div>
+            </form>
+        {% else %}
+            <div class="well body">
+                Aucun pays n'est enregistré !
+            </div>
+        {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

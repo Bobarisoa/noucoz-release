@@ -1,0 +1,418 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+     <div id="wrapper">
+		<div id="header">
+			<div class="menu-top-left" style="margin-top:0.5em">
+				<ul id="menu-vertical">
+					<li class="dropdown">
+						<a style="color:#000;font-size:1em;text-transform:uppercase;" href="#" class="dropdown-toggle" data-toggle="dropdown">Pays <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{% for country in countries %}
+								<li><a href="{{ path('espace_membre', {'country':country.id}) }}">{{ country.name }}</a></li>
+							{% endfor %}
+						</ul>
+					</li><!--
+				 --><li class="dropdown">
+				 		<a style="color: #2e2e2e" href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
+					</li>
+				</ul>
+			</div>
+			 
+			<div class="menu-top-right" style="margin-right:0.3em;margin-top:0.5em;">
+				<ul id="menu-vertical">
+					<li class="dropdown">
+					<a href="" title="Connexion" style="color:#000;font-size:1em;" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('img/profil.jpg') }}"/ width="20px" height="20">&nbsp;&nbsp;{{ app.session.get('user')}}<span class="caret"></span></a>
+						<ul class="dropdown-menu" style="margin-left:-5em">
+							<li><a href="{{ path('profil-membre',{'user' : app.session.get('user')}) }}"><i class="glyphicon glyphicon-user" style="color:#000;"></i>&nbsp;&nbsp;Profil</a></li>
+							<li><a href="{{ path('confidentialite') }}"><i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;Confidentialité</a></li>
+							<li><a href=""><i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;Sondages</a></li>
+							<li><a href="{{ path('deconnexion')}}"><i class="glyphicon glyphicon-remove"></i>&nbsp;&nbsp;Déconnexion</a></li>
+						</ul>
+					</li>
+					
+
+				</ul>
+			</div>
+
+			
+			<div class="header-center-logo" style="margin-left:13em;margin-top:-0.9em">
+				<div class="logo">
+
+					<a href="#"><img src="{{ asset('template/img/logo.jpg') }}" /></a>
+				</div>
+				<div class="recherche" >
+					<form action="#" class="form-wrapper cf">
+						<div class="form-group">
+							<input type="text" id="search"  placeholder="rechercher..." >
+						</div>
+					</form>																																												
+				</div>
+			</div>
+			<nav class="navbar navbar-default navbar-inverse" style="background:#000;border-radius:0px;margin-top:7em">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+						    	<span class="icon-bar"></span>
+						    	<span class="icon-bar"></span>
+						    	<span class="icon-bar"></span>
+						</button>
+						      
+					</div>
+
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a style="margin-left:4em;text-decoration:underline" href="{{ path('home',{'user':app.session.get('user') }) }}">Home&nbsp;&nbsp;<i class="glyphicon glyphicon-home"></i></a></li>
+							<li><a style="padding-left:2em;border-left:1px solid #fff" href="{{ path('liste',{ 'user': app.session.get('user') }) }} " title="Amis">Amis&nbsp;&nbsp;<i class="glyphicon glyphicon-th-list"></i></a></li>
+						    <li ><a href="{{ path('liste_msg',{ 'user': app.session.get('user') }) }}" style="padding-left:2em;border-left:1px solid #fff" title="message privé"><div width="100">Messages&nbsp;&nbsp;<i class="glyphicon glyphicon-comment"></i></div></a></li>
+						    <li ><a href="{{ path('poster',{ 'user' : app.session.get('user')})}}" style="padding-left:2em;border-left:1px solid #fff" title="Poster un article">Poster article&nbsp;&nbsp;<i class="glyphicon glyphicon-file"></i></a></li>
+						    <li><a href="" style="padding-left:2em;border-left:1px solid #fff" title="Créer un événement">Créer événement&nbsp;&nbsp;<i class="glyphicon glyphicon-bell"></i></a></li>
+						    <li><a href="" style="padding-left:2em;border-left:1px solid #fff;border-right:1px solid #fff" title="Membre premium"><div>Membre premium</div></a></li>
+						</ul>
+						    
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+		</div><!-- slide -->
+
+        <div id="container">
+			<div class="row">
+				<!--<div class="col-md-4" style="border: 1px solid #000;">
+					<div class="row">
+						<section id="content">
+						</section>
+					</div>
+				</div>-->
+				<br/><br/>
+				
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<span style="margin-left:3em;text-transform:uppercase;font-size:0.8em">articles</span>
+							</div>
+						<div class="panel-body">
+						
+						<ul id="sortable" >
+
+							<li class="non-sortable" {#style="margin-top:5.5em"#}>
+								<form role="form" method="post" action="{{ path('espace_membre') }}">
+									<div class="form-group" style="margin-top:1em">
+										<label for="category" class="conts"><em>Quelles articles voulez-vous afficher?</em></label>
+										<select id="category" name="category" class="form-control">
+											{% for category in categories %}
+												<option  value="{{ category.id }}">{{ category.nom }}</option>
+											{% endfor %}
+										</select>
+									</div>
+									<div>
+										<button type="submit" class="btn btn-default btn-block">Epingler</button>
+									</div>
+								</form>
+							</li>
+								
+										{% if articles is defined %}
+											{% for article in articles %}
+										
+												<li>
+														<p><img src="{{ asset('template/img/c-3.jpg')  }}"  /></p>
+														<br/>
+														<h4>Top iPhone Apps</h4>
+														<p class="date">June 15, 2012</p>
+														<p class="conts">Lorem ipsum dolor sit amet, te possim inimicus ius. Alii ullam at corper pri ad, per nulla luptatum te, in qui delenit nostrum. Nam ad labores.</p>
+														<h5><b><em>Titre:</em></b> {{ article.titre }}</h5>
+														<b><em>Pays:</em></b> {{ article.country.name }}</em> <br>
+														<b><em>Cat&eacute;gorie:</em></b> {{ article.category.nom }}<br/><br/>
+														<a href="#">Afficher la suite</a>
+												</li>
+
+											{% endfor %}
+										{% endif %}
+								
+						
+						</ul>
+					
+						</div>
+						</div>
+				
+
+				</div>
+			</div>
+			{#<div class="row" style="border: 1px solid #c67605;">
+				<div class="col-md-12">
+					<div class="pagination">
+						<ul id="pagination-flickr">
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>#}
+		</div>
+
+		<div class="footer">
+			<br/>
+			<ul>
+				<li><a href="#"><img src="{{ asset('template/img/tw.jpg') }}" alt="" /></a></li>
+				<li><a href="#"><img src="{{ asset('template/img/rss.jpg') }}" alt="" /></a></li>
+				<li><a href="#"><img src="{{ asset('template/img/fb.jpg') }}" alt="" /></a></li>
+				<li><a href="#"><img src="{{ asset('template/img/p.jpg') }}" alt="" /></a></li>
+			</ul>
+		</div>	
+			<center id="footer" > &copy; 2015 Nucoze</center>
+	</div>
+
+	<script type="text/javascript">
+
+	var j = jQuery.noConflict();
+	j(document).ready(function() {
+		j('#content').pinterest_grid({
+		no_columns: 4,
+		padding_x: 10,
+		padding_y: 10,
+		margin_bottom: 50,
+		single_column_breakpoint: 700
+		});
+		});
+
+
+;(function ($, window, document, undefined) {
+			var pluginName = 'pinterest_grid',
+				defaults = {
+					padding_x: 10,
+					padding_y: 10,
+					no_columns: 3,
+					margin_bottom: 50,
+					single_column_breakpoint: 700
+				},
+				columns,
+				$article,
+				article_width;
+
+			function Plugin(element, options) {
+				this.element = element;
+				this.options = $.extend({}, defaults, options) ;
+				this._defaults = defaults;
+				this._name = pluginName;
+				this.init();
+			}
+
+			Plugin.prototype.init = function () {
+				var self = this,
+					resize_finish;
+
+				$(window).resize(function() {
+					clearTimeout(resize_finish);
+					resize_finish = setTimeout( function () {
+						self.make_layout_change(self);
+					}, 11);
+				});
+
+				self.make_layout_change(self);
+
+				setTimeout(function() {
+					$(window).resize();
+				}, 500);
+			};
+
+			Plugin.prototype.calculate = function (single_column_mode) {
+				var self = this,
+					tallest = 0,
+					row = 0,
+					$container = $(this.element),
+					container_width = $container.width();
+					$article = $(this.element).children();
+
+				if(single_column_mode === true) {
+					article_width = $container.width() - self.options.padding_x;
+				} else {
+					article_width = ($container.width() - self.options.padding_x * self.options.no_columns) / self.options.no_columns;
+				}
+
+				$article.each(function() {
+					$(this).css('width', article_width);
+				});
+
+				columns = self.options.no_columns;
+
+				$article.each(function(index) {
+					var current_column,
+						left_out = 0,
+						top = 0,
+						$this = $(this),
+						prevAll = $this.prevAll(),
+						tallest = 0;
+
+					if(single_column_mode === false) {
+						current_column = (index % columns);
+					} else {
+						current_column = 0;
+					}
+
+					for(var t = 0; t < columns; t++) {
+						$this.removeClass('c'+t);
+					}
+
+					if(index % columns === 0) {
+						row++;
+					}
+
+					$this.addClass('c' + current_column);
+					$this.addClass('r' + row);
+
+					prevAll.each(function(index) {
+						if($(this).hasClass('c' + current_column)) {
+							top += $(this).outerHeight() + self.options.padding_y;
+						}
+					});
+
+					if(single_column_mode === true) {
+						left_out = 0;
+					} else {
+						left_out = (index % columns) * (article_width + self.options.padding_x);
+					}
+
+					$this.css({
+						'left': left_out,
+						'top' : top
+					});
+				});
+
+				this.tallest($container);
+				$(window).resize();
+			};
+
+			Plugin.prototype.tallest = function (_container) {
+				var column_heights = [],
+					largest = 0;
+
+				for(var z = 0; z < columns; z++) {
+					var temp_height = 0;
+					_container.find('.c'+z).each(function() {
+						temp_height += $(this).outerHeight();
+					});
+					column_heights[z] = temp_height;
+				}
+
+				largest = Math.max.apply(Math, column_heights);
+				_container.css('height', largest + (this.options.padding_y + this.options.margin_bottom));
+			};
+
+			Plugin.prototype.make_layout_change = function (_self) {
+				if($(window).width() < _self.options.single_column_breakpoint) {
+					_self.calculate(true);
+				} else {
+					_self.calculate(false);
+				}
+			};
+
+			$.fn[pluginName] = function (options) {
+				return this.each(function () {
+					if (!$.data(this, 'plugin_' + pluginName)) {
+						$.data(this, 'plugin_' + pluginName,
+						new Plugin(this, options));
+					}
+				});
+			}
+		// sortable
+		$(function(){
+			$("#sortable").sortable({
+				items:'> li:not(.non-sortable)',
+				revert: true
+			});
+			$("#sortable").disableSelection();
+		});
+
+		})(jQuery, window, document);
+</script>	
+{% endblock %}
+	 
+        
+{% block stylesheets %}
+	
+<style>
+	
+	
+	.recherche #search{
+		width:250px;
+		border-radius:2px;
+
+	}
+	.navbar-nav  li a {
+		font-size:1.2em;
+		font-weight:initial;	
+		color:#fff;
+
+		margin-left:2em;
+
+
+	}
+	
+
+
+	.navbar-nav .active a{
+		margin-left:8.2em;
+	}
+
+	#search:focus{
+		width:400px;
+		background:#fff;
+	}
+	#search {
+		-webkit-transition:0.5s;
+		background:#efefef;
+	}
+
+	.pagination ul li{
+		display:inline-block;
+	}
+
+	#content article p img { 
+		width:11.05em;
+	}
+
+	#footer{
+		color:#2e2e2e;
+		font-size:0.7em;
+	}
+
+	.menu-top-left ul li a {
+		text-transform:uppercase;
+		font-size:0.7em;
+		color: #2e2e2e;
+	}
+
+	#menu-vertical > li li a {
+		color: #2e2e2e;
+	}
+
+	#contenu {
+		background-color: #a7a7a7;
+		margin-top: 30px;
+		margin-left: 4px;
+	}
+
+	#sortable { list-style-type: none; margin: 0; padding: 0; }
+	#sortable li {
+		margin-right: 10px;
+		margin-bottom: 10px	;
+		padding: 1px;
+		float: left;
+
+		border: 1px solid #dbdbdb;
+		width: 199px;
+		background: white;
+		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+		padding: 10px;
+	}
+
+	#sortable li img{ margin-left: -10px;margin-top: -10px; margin-bottom: -10px; max-width: 198px}
+	#sortable li h4{color:#2e2e2e;margin-bottom: -3px;}
+	#sortable li .date{color:#8a8a8a;font-size:11px;}
+	#sortable li .conts{color:#2f2f2f;font-size:12px;}
+
+
+</style>
+
+{% endblock %}

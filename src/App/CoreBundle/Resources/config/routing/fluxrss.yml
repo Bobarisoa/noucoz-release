@@ -1,0 +1,32 @@
+flux_rss:
+    path: /
+    defaults: { _controller: "AppCoreBundle:FluxRss:index" }
+
+flux_rss_list:
+    pattern:  /liste
+    defaults: { _controller: "AppCoreBundle:FluxRss:show" }
+
+flux_rss_create:
+    pattern:  /ajouter
+    defaults: { _controller: "AppCoreBundle:FluxRss:create" }
+    
+flux_rss_edit:
+    pattern:  /{id}/modifier
+    defaults: { _controller: "AppCoreBundle:FluxRss:edit" }
+    requirements:
+        id: \d+
+        _method: get|put
+
+flux_rss_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AppCoreBundle:FluxRss:delete" }
+    requirements: { _method: post|get }
+
+
+article_flux_rss:
+    pattern: /article
+    defaults: { _controller: "AppCoreBundle:FluxRss:showRss" }    
+
+add_article:
+    pattern: /ajouter-article
+    defaults: { _controller: "AppCoreBundle:FluxRss:showRss"}

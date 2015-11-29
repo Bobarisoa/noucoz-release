@@ -1,0 +1,23 @@
+article:
+    path: /
+    defaults: { _controller: "AppCoreBundle:Article:index" }
+
+article_list:
+    pattern:  /liste
+    defaults: { _controller: "AppCoreBundle:Article:show" }
+
+article_create:
+    pattern:  /ajouter
+    defaults: { _controller: "AppCoreBundle:Article:create" }
+    
+article_edit:
+    pattern:  /{id}/modifier
+    defaults: { _controller: "AppCoreBundle:Article:edit" }
+    requirements:
+        id: \d+
+        _method: get|put
+
+article_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AppCoreBundle:Article:delete" }
+    requirements: { _method: post|get }

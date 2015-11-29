@@ -1,0 +1,61 @@
+#Profil#
+agence3w_profil:
+    resource: "@AppCoreBundle/Resources/config/routing/profil.yml"
+    
+#AppCoreBundle Routes
+agence3w_core_dashboard:
+    resource: "@AppCoreBundle/Resources/config/routing/dashboard.yml"
+    prefix:   /
+  
+agence3w_utilisateur:
+    resource: "@AppCoreBundle/Resources/config/routing/utilisateur.yml"
+    prefix:   /membre
+
+
+agence3w_article:
+    resource: "@AppCoreBundle/Resources/config/routing/article.yml"
+    prefix:   /article
+
+agence3w_flux_rss:
+    resource: "@AppCoreBundle/Resources/config/routing/fluxrss.yml"
+    prefix:   /flux-rss
+
+agence3w_pays:
+    resource: "@AppCoreBundle/Resources/config/routing/pays.yml"
+    prefix:   /pays
+
+# Articles(new) #
+agence3w_articles:
+    resource: "@AppCoreBundle/Resources/config/routing/articles.yml"
+    prefix: /articles
+
+agence3w_commentaire:
+    resource: "@AppCoreBundle/Resources/config/routing/commentaire.yml"
+    prefix: /commentaire
+
+agence3w_top_news:
+    resource: "@AppCoreBundle/Resources/config/routing/bloc.yml"
+    prefix: /bloc
+
+
+user_access: 
+    pattern:   /user
+    defaults: { _controller: "WebFrontBundle:Membre:login" }  
+
+sondage: 
+   resource: "@AppCoreBundle/Resources/config/routing/sondage.yml"
+   prefix: /admin/sondage
+
+
+check_login:
+    pattern:   /connexion
+    defaults: { _controller:"WebFrontBundle:Membre:checkLogin" }   
+
+
+connexion_login:
+    pattern:   /{user}   
+    defaults:  { _controller:"WebFrontBundle:Membre:login" }
+
+
+ 
+

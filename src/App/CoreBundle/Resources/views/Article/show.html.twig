@@ -1,0 +1,37 @@
+{% if entities is not empty %}
+	<form action="{{ path('article_list') }}" method="post">
+		    
+                <div class="table-overflow">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Titre</th>
+                                                <th>Auteur</th>
+                                                <th>Catégorie</th>
+                                                <th>Contenu</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for entity in entities %}
+                                            <tr>
+                                                <td>{{ entity.titre }}</td>
+                                                <td>{{ entity.auteur }}</td>
+                                                <td>{{ entity.category.nom }}</td>
+                                                <td>{{ entity.contenu }}</td>
+                                                <td>
+                                                        <a class="btn btn-info btn-small" href="{{ path('article_edit', { 'id': entity.id }) }}" title="Modifier"><i class="icon-pencil icon-white"></i>&nbsp;Modifier</a>
+                                                        <a class="btn btn-danger btn-small" href="{{ path('article_delete', { 'id': entity.id }) }}" data-toggle="confirm" data-loading-text="Chargement ..." title="Supprimer"><i class="icon-trash icon-white"></i>&nbsp;Supprimer</a>
+
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                </form>
+        {% else %}
+                <div class="well body">
+                        Aucun article n'est enregistré !
+                </div>
+{% endif %}

@@ -1,0 +1,767 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+
+    <div id="wrapper">
+	<div class="cd-user-modal" style="z-index: 50;"> <!-- this is the entire modal form, including the background -->
+		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+			<ul class="cd-switcher" style="list-style: none; margin-left: -40px">
+				<li><a href="#0"></a></li>
+				<li><a href="#0">Inscription</a></li>
+			</ul>
+
+			<div id="cd-login"> <!-- log in form -->
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Erreur</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Mot de passe</label>
+						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Mot de passe">
+						<a href="#0" class="hide-password">Cacher</a>
+						<span class="cd-error-message">Erreur</span>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">Se souvenir de moi</label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="Login">
+					</p>
+				</form>
+
+				<p class="cd-form-bottom-message"><a href="#0">Mot de passe oublié?</a></p>
+				<!-- <a href="#0" class="cd-close-form">Close</a> -->
+			</div> <!-- cd-login -->
+
+			<!--<div class="container">-->
+				<div id="cd-signup"> <!-- sign up form -->
+					<div class="alerts">
+						{% for type, flashMessages in app.session.flashbag.all() %}
+							{% for flashMessage in flashMessages %}
+								<div class="alert widget alert-{{ type }} fade in">
+										<button type="button" class="close" data-dismiss="alert">&times;</button>
+									{{ flashMessage|raw }}
+								</div>
+							{% endfor %}
+						{% endfor %}
+						</div>
+						{% form_theme form 'bootstrap_3_layout.html.twig' %}
+						<form action="{{ path('homepage') }}" method="post" {{ form_enctype(form) }}>
+							{{ form_widget(form) }}
+							<div class="">
+									<div class="">
+											<button type="submit" class="btn btn-success">Ajouter</button>
+									</div>
+							</div>
+						</form>
+
+					<!-- <a href="#0" class="cd-close-form">Close</a> -->
+				</div> <!-- cd-signup -->
+			<!--</div>-->
+
+			<div id="cd-reset-password"> <!-- reset password form -->
+				<p class="cd-form-message">Mot de passe oublié? Un mot de passe vous sera envoyé sur l'adresse e-mail ci-dessous.</p>
+
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="reset-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="Réinitialiser mot de passe">
+					</p>
+				</form>
+
+				<p class="cd-form-bottom-message"><a href="#0">Revenir à la connexion</a></p>
+			</div> <!-- cd-reset-password -->
+			<a href="#0" class="cd-close-form">Close</a>
+		</div> <!-- cd-user-modal-container -->
+	</div> <!-- cd-user-modal -->
+
+		<div id="header">
+			<div class="menu-top-left">
+				<ul id="menu-vertical">
+					<li class="dropdown">
+						<a style="color: #000;font-size:1em" href="#" class="dropdown-toggle" data-toggle="dropdown">Pays <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{% for country in countries %}
+								<li>
+								
+									<a href="{{ path('homepage', { 'p':country.name }) }}">{{ country.name|lower }}</a>
+								
+								</li>
+							{% endfor %}
+						</ul>
+					</li><!--
+				 --><li class="dropdown">
+				 		<a style="color: #000;font-size:1em" href="#" class="dropdown-toggle" data-toggle="dropdown">Langue <!--<span class="caret"></span>--></a>
+						{#<ul class="dropdown-menu">
+							<li><a href="#">Francais</a></li>
+							<li><a href="#">Anglais</a></li>
+						</ul>#}
+					</li>
+				</ul>
+			</div>
+
+			<div class="menu-top-right" style="margin-right:10em;">
+				<ul>
+					<li><a href="{{ path('login')}}" title="Connexion" style="color:#000;font-size:1em;text-transform:uppercase;">Se connecter </a></li>
+					<li id="link-inscription" ><a  href="#0" title="Inscription" style="color:#000;font-size:1em;text-transform:uppercase;" class="cd-signup">S'inscrire</a></li>
+
+				</ul>
+			</div>
+
+			<div class="header-center-logo">
+					<div class="logo" style="margin-left:14em">
+							<a href="#"><img src="{{ asset('template/img/logo.jpg') }}" /></a>
+					</div>
+					
+					<div class="recherche" id="search_form">
+						<form action="#" class="form-wrapper cf">
+							<div class="form-group">
+								<input type="text" id="search"  placeholder="Rechercher..." >
+							</div>
+						</form>
+					</div>
+				</div>
+		<nav class="navbar navbar-default navbar-inverse" style="background:#000;border-radius:0px;margin-top:8em">
+		<div class="container-fluid">
+
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		    </div>
+		    <!--test -->
+		    <div id="navbars" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
+			    <ul class="nav navbar-nav">
+			        <li class="active"><a href="{{ path( 'homepage' )}}" >Accueil <span class="sr-only"></span></a></li>
+			        <li class="dropdown">
+						<a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown">Actualités <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{% for cat in categorie %}
+							
+							<li><a href="{{ path('actualites_link',{'cat' : cat.nom} ) }}" class="">{{ cat.nom }} <span class='menu-actus-{{ cat.id }} notification-bubble pull-right' style="display:none"></span></a>
+							</li>
+
+							{% endfor %}
+						</ul>
+					</li>
+			        <li><a style="color: #fff" href="#">Images</a></li>
+			        <li><a style="color: #fff" href="#">Vidéo</a></li>
+			       {#<li><a style="color: #fff" href="{{ path('sondage') }}">Sondage</a></li>#}
+			    </ul>
+		  	</div>
+
+		</div>
+		</nav>
+	</div>
+
+        <div id="container">
+			<div class="top-photo" style="padding-left:2.5em;">
+
+				<img style="margin-right:0.4em;" src="{{ asset('template/img/top-1.jpg') }}" alt="" />
+
+
+				<img style="margin-right:0.4em;" src="{{ asset('template/img/top-2.jpg') }}" alt="" />
+				<img src="{{ asset('template/img/top-3.jpg') }}" alt="" />
+
+		</div>
+			<script>
+				jQuery(document).ready(function ($) {
+					var _SlideshowTransitions = [
+					//Fade Fly in R
+					{$Duration: 1200, x: -0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
+					//Fade Fly out L
+					, { $Duration: 1200, x: 0.3, $SlideOut: true, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
+					];
+
+					var _CaptionTransitions = [];
+					_CaptionTransitions["L"] = { $Duration: 800, x: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+					_CaptionTransitions["R"] = { $Duration: 800, x: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+					_CaptionTransitions["T"] = { $Duration: 800, y: 0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+					_CaptionTransitions["B"] = { $Duration: 800, y: -0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+					_CaptionTransitions["TL"] = { $Duration: 800, x: 0.6, y: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine, $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+					_CaptionTransitions["TR"] = { $Duration: 800, x: -0.6, y: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine, $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+					_CaptionTransitions["BL"] = { $Duration: 800, x: 0.6, y: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine, $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+					_CaptionTransitions["BR"] = { $Duration: 800, x: -0.6, y: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine, $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+
+					_CaptionTransitions["CLIP|LR"] = { $Duration: 600, $Clip: 3, $Easing: $JssorEasing$.$EaseInOutCubic };
+					_CaptionTransitions["MCLIP|L"] = { $Duration: 600, $Clip: 1, $Move: true, $Easing: $JssorEasing$.$EaseInOutCubic };
+					_CaptionTransitions["LISTH|L"] = { $Duration: 1000, x: 0.8, $Clip: 1, $Easing: $JssorEasing$.$EaseInOutCubic, $ScaleClip: 0.8, $Opacity: 2, $During: { $Left: [0.4, 0.6], $Clip: [0, 0.4], $Opacity: [0.4, 0.6]} };
+					_CaptionTransitions["WAVE|L"] = { $Duration: 1300, x: 0.6, y: 0.3, $Easing: { $Left: $JssorEasing$.$EaseLinear, $Top: $JssorEasing$.$EaseInWave }, $Opacity: 2, $Round: { $Top: 2.5} };
+					_CaptionTransitions["JUMPDN|R"] = { $Duration: 1000, x: -0.6, y: 0.4, $Easing: { $Left: $JssorEasing$.$EaseLinear, $Top: $JssorEasing$.$EaseOutJump }, $Round: { $Top: 1.5} };
+					_CaptionTransitions["DDG|TR"] = { $Duration: 1200, x: -0.3, y: 0.3, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump }, $Opacity: 2, $During: { $Left: [0, 0.8], $Top: [0, 0.8] }, $Round: { $Left: 0.8, $Top: 0.8} };
+					_CaptionTransitions["DODGEDANCE|L"] = { $Duration: 1200, x: 0.3, y: -0.3, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump, $Zoom: $JssorEasing$.$EaseOutQuad }, $Opacity: 2, $During: { $Left: [0, 0.8], $Top: [0, 0.8] }, $Round: { $Left: 0.8, $Top: 2.5} };
+					_CaptionTransitions["FLUTTER|L"] = { $Duration: 600, x: 0.2, y: -0.1, $Easing: { $Left: $JssorEasing$.$EaseLinear, $Top: $JssorEasing$.$EaseInWave }, $Opacity: 2, $Round: { $Top: 1.3} };
+					_CaptionTransitions["TORTUOUS|VB"] = { $Duration: 1200, y: -0.2, $Zoom: 1, $Easing: { $Top: $JssorEasing$.$EaseOutWave, $Zoom: $JssorEasing$.$EaseOutCubic }, $Opacity: 2, $During: { $Top: [0, 0.7] }, $Round: { $Top: 1.3} };
+					_CaptionTransitions["FADE"] = { $Duration: 600, $Opacity: 2 };
+					_CaptionTransitions["ZMF|10"] = { $Duration: 600, $Zoom: 11, $Easing: { $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 };
+					_CaptionTransitions["RTT|10"] = { $Duration: 600, $Zoom: 11, $Rotate: 1, $Easing: { $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.8} };
+					_CaptionTransitions["RTTL|BR"] = { $Duration: 600, x: -0.6, y: -0.6, $Zoom: 11, $Rotate: 1, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Top: $JssorEasing$.$EaseInCubic, $Zoom: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInCubic }, $Opacity: 2, $Round: { $Rotate: 0.8} };
+
+					var options = {
+						$AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+						$AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
+						$AutoPlayInterval: 4000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+						$PauseOnHover: 1,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+						$ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+						$SlideDuration: 500,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+						$MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+						//$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+						//$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+						$SlideSpacing: 0, 					                //[Optional] Space between each slide in pixels, default value is 0
+						$DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+						$ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+						$UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+						$PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+						$DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+						$SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
+							$Class: $JssorSlideshowRunner$,                 //[Required] Class to create instance of slideshow
+							$Transitions: _SlideshowTransitions,            //[Required] An array of slideshow transitions to play slideshow
+							$TransitionsOrder: 1,                           //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
+							$ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
+						},
+
+						$CaptionSliderOptions: {                            //[Optional] Options which specifies how to animate caption
+							$Class: $JssorCaptionSlider$,                   //[Required] Class to create instance to animate caption
+							$CaptionTransitions: _CaptionTransitions,       //[Required] An array of caption transitions to play caption, see caption transition section at jssor slideshow transition builder
+							$PlayInMode: 1,                                 //[Optional] 0 None (no play), 1 Chain (goes after main slide), 3 Chain Flatten (goes after main slide and flatten all caption animations), default value is 1
+							$PlayOutMode: 3                                 //[Optional] 0 None (no play), 1 Chain (goes before main slide), 3 Chain Flatten (goes before main slide and flatten all caption animations), default value is 1
+						},
+
+						$BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
+							$Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
+							$ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+							$ActionMode: 3,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
+							$Lanes: 2,                                      //[Optional] Specify lanes to arrange items, default value is 1
+							$SpacingX: 10,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+							$SpacingY: 10                                    //[Optional] Vertical space between each item in pixel, default value is 0
+						},
+
+						$ArrowNavigatorOptions: {
+							$Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+							$ChanceToShow: 1                                //[Required] 0 Never, 1 Mouse Over, 2 Always
+						},
+
+						$ThumbnailNavigatorOptions: {
+							$Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
+							$ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+							$ActionMode: 0,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
+							$DisableDrag: true,                             //[Optional] Disable drag or not, default value is false
+							$Orientation: 2                                 //[Optional] Orientation to arrange thumbnails, 1 horizental, 2 vertical, default value is 1
+						}
+					};
+
+					var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+					function ScaleSlider() {
+						var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+						if (parentWidth)
+							jssor_slider1.$ScaleWidth(Math.min(parentWidth, 940));
+						else
+							window.setTimeout(ScaleSlider, 30);
+					}
+					ScaleSlider();
+
+					$(window).bind("load", ScaleSlider);
+					$(window).bind("resize", ScaleSlider);
+					$(window).bind("orientationchange", ScaleSlider);
+				});
+			</script>
+			<!-- Jssor Slider Begin -->
+			<div id="slider1_container" style="position: relative; width: 940px;
+				height: 300px;">
+
+				<!-- Loading Screen -->
+
+
+				<!-- Slides Container -->
+			<div class="container">
+				<div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 940px; height: 300px;
+					overflow: hidden;">
+						<div>
+							<img u=image src="{{ asset('template/img/landscape/slide-1.jpg') }}" />
+							<div u="thumb">Do you notice it scales while window resize?</div>
+							<div u="caption" t="L" style="background:#000;padding:20px;position: absolute; top: 20px; left: 20px; width: 400px; height: 130px; color: #ffffff; font-size: 20px;">
+								<div style="background:#000;"><span style="font-weight:bold;">Top iPhone Apps</span><br/><span style="font-size:14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span></div>
+							</div>
+					</div>
+					<div>
+						<img u=image src="{{ asset('template/img/landscape/slide-1.jpg') }}" />
+						<div u="thumb">Do you know this is text format thumbnail?</div>
+						<div u="caption" t="MCLIP|L" style="position: absolute; top: 105px; left: 100px; width: 400px; height: 30px; color: #ffffff; font-size: 26px; line-height: 30px; text-align: center;">This is 'MCLIP|L' caption transition</div>
+						<div u="caption" t="LISTH|L" style="position: absolute; top: 165px; left: 100px; width: 400px; height: 30px; color: #ffffff; font-size: 26px; line-height: 30px; text-align: center;">This is 'LISTH|L' caption transition</div>
+					</div>
+				</div>
+			</div>
+				<style>
+					/* jssor slider bullet navigator skin 01 css */
+					/*
+					.jssorb01 div           (normal)
+					.jssorb01 div:hover     (normal mouseover)
+					.jssorb01 .av           (active)
+					.jssorb01 .av:hover     (active mouseover)
+					.jssorb01 .dn           (mousedown)
+					*/
+					.jssorb01 {
+						position: absolute;
+					}
+					.jssorb01 div, .jssorb01 div:hover, .jssorb01 .av {
+						position: absolute;
+						/* size of bullet elment */
+						width: 12px;
+						height: 12px;
+						filter: alpha(opacity=70);
+						opacity: .7;
+						overflow: hidden;
+						cursor: pointer;
+						border: #000 1px solid;
+					}
+					.jssorb01 div { background-color: gray; }
+					.jssorb01 div:hover, .jssorb01 .av:hover { background-color: #d3d3d3; }
+					.jssorb01 .av { background-color: #fff; }
+					.jssorb01 .dn, .jssorb01 .dn:hover { background-color: #555555; }
+				</style>
+
+				<style>
+					/* jssor slider arrow navigator skin 05 css */
+					/*
+					.jssora05l                  (normal)
+					.jssora05r                  (normal)
+					.jssora05l:hover            (normal mouseover)
+					.jssora05r:hover            (normal mouseover)
+					.jssora05l.jssora05ldn      (mousedown)
+					.jssora05r.jssora05rdn      (mousedown)
+					*/
+					 .jssora05r {
+					 display: block;
+						position: absolute;
+						/* size of arrow element */
+						width: 93px;
+						height: 78px;
+						cursor: pointer;
+						background: url(http://noucoz.com/web/template/img/next.png) no-repeat;
+						overflow: hidden;
+					 }
+					.jssora05l{
+						display: block;
+						position: absolute;
+						/* size of arrow element */
+						width: 82px;
+						height: 78px;
+						cursor: pointer;
+						background: url(http://noucoz.com/web/template/img/prev.png) no-repeat;
+						overflow: hidden;
+					}
+					.jssora05l { background-position: 0px 0px;margin-left: -27px }
+					.jssora05r { background-position: 0px 0px;margin-right: -21px;}
+					.jssora05l:hover { background-position: 0px 0px; }
+					.jssora05r:hover { background-position: 0px 0px; }
+					.jssora05l.jssora05ldn { background-position: -250px -40px; }
+					.jssora05r.jssora05rdn { background-position: -310px -40px; }
+				</style>
+				<!-- Arrow Left -->
+				<span u="arrowleft" class="jssora05l" style="top: 123px; left: 8px;">
+				</span>
+				<!-- Arrow Right -->
+				<span u="arrowright" class="jssora05r" style="top: 123px; right: 8px;">
+				</span>
+				<!-- Trigger -->
+			</div>
+			<br/>
+
+
+				<div class="bottom-photo" style="padding-left:2.5em;">
+					<img  style="margin-right:0.4em;" src="{{ asset('template/img/top-4.jpg') }}" alt="" />
+					<img  style="margin-right:0.4em;" src="{{ asset('template/img/top-5.jpg') }}" alt="" />
+					<img  src="{{ asset('template/img/top-6.jpg') }}" alt="" />
+				</div>
+
+			</div>
+
+<div class="container">
+	<div class="row">
+	<div class="col-md-offset-1 col-md-10">
+			<div class="fildariane">
+				<span >
+				<a href="{{ path('topnews')}}" style="color:#2e2e2e" href="#">Top news / &nbsp;</a>
+				<a href="{{ path('pluslus')}}" style="color:#2e2e2e" href="#">Plus lus / &nbsp;</a>
+			{#
+				<a href="{{ path('actualitesporitifs')}}" style="color:#2e2e2e" href="#">Actualité sportifs &nbsp;</a>
+			#}	
+				<span>
+			</div>
+			<hr/>
+			<section id="content">
+					{# Render article from db #}
+					{% for article in pagination %}
+					<article class="box-new">
+						
+						{% if article.photo is not empty  %}
+							{% if article.type == 2 %}
+								<p ><img src="http://noucoz.com/web/template/img/{{article.photo }}" style="width:197px" height="170px" alt=""/></p>
+								
+							{% else  %}	
+								<p ><img src="{{ article.photo }}" style="width:197px" height="170px" alt=""/></p>
+							{% endif %}
+						{% else %}
+							<p ><img src="http://noucoz.com/web/template/img/pas_photo.png" style="width:197px" height="170px" alt=""/></p>
+					    {% endif %}
+						
+						<p class="conts" style="height:50px">Titre: {{ article.titre }}</p><br/>
+						<p class="conts">Source: <a href="http://www.lemonde.fr" title="http://www.lemonde.fr">{{ article.source }}</a><br/>
+						Contenu: {{ article.contenu }}<br/><br/>
+
+						Auteur: {{ article.auteur }}<br/>
+						Notification: <span class="badge">{{ article.notification }}</span><br/>
+						Classe: {{ article.classe.titre }}</p>
+						<p class="date">Pays:  {{ article.country.name }}<br/>
+						{{ article.create }}</p>
+
+						<span class="label label-default"><a href="{{ path('article_voir', {'id':article.id}) }}" style="margin-left:0.1em;color:#fff">Afficher la suite ...</a></span>
+					</article>
+					{% endfor %}
+
+					
+						
+
+				</section>
+			</div>
+		</div>
+
+				<div class="pagination" style="margin-left:5em">
+					<ul id="pagination-flickr">
+						{{ knp_pagination_render(pagination) }}
+					</ul>
+				</div>
+			</div>
+</div>
+</div>
+		<div class="footer">
+			<br/>
+			<ul>
+				<li><a href="#"><img src="{{ asset('template/img/tw.jpg') }}" alt="" /></a></li>
+				<li><a href="#"><img src="{{ asset('template/img/rss.jpg') }}" alt="" /></a></li>
+				<li><a href="#"><img src="{{ asset('template/img/fb.jpg') }}" alt="" /></a></li>
+				<li><a href="#"><img src="{{ asset('template/img/p.jpg') }}" alt="" /></a></li>
+			</ul>
+
+
+
+		</div>
+			<center id="footer"> &copy; 2015 Nucoze</center>
+        </div>
+
+    </div>
+	<script type="text/javascript">
+	var j = jQuery.noConflict();
+	j(document).ready(function() {
+		j('#content').pinterest_grid({
+		no_columns: 4,
+		padding_x: 10,
+		padding_y: 10,
+		margin_bottom: 50,
+		single_column_breakpoint: 700
+		});
+		});
+
+
+;(function ($, window, document, undefined) {
+			var pluginName = 'pinterest_grid',
+				defaults = {
+					padding_x: 10,
+					padding_y: 10,
+					no_columns: 3,
+					margin_bottom: 50,
+					single_column_breakpoint: 700
+				},
+				columns,
+				$article,
+				article_width;
+
+			function Plugin(element, options) {
+				this.element = element;
+				this.options = $.extend({}, defaults, options) ;
+				this._defaults = defaults;
+				this._name = pluginName;
+				this.init();
+			}
+
+			Plugin.prototype.init = function () {
+				var self = this,
+					resize_finish;
+
+				$(window).resize(function() {
+					clearTimeout(resize_finish);
+					resize_finish = setTimeout( function () {
+						self.make_layout_change(self);
+					}, 11);
+				});
+
+				self.make_layout_change(self);
+
+				setTimeout(function() {
+					$(window).resize();
+				}, 500);
+			};
+
+			Plugin.prototype.calculate = function (single_column_mode) {
+				var self = this,
+					tallest = 0,
+					row = 0,
+					$container = $(this.element),
+					container_width = $container.width();
+					$article = $(this.element).children();
+
+				if(single_column_mode === true) {
+					article_width = $container.width() - self.options.padding_x;
+				} else {
+					article_width = ($container.width() - self.options.padding_x * self.options.no_columns) / self.options.no_columns;
+				}
+
+				$article.each(function() {
+					$(this).css('width', article_width);
+				});
+
+				columns = self.options.no_columns;
+
+				$article.each(function(index) {
+					var current_column,
+						left_out = 0,
+						top = 0,
+						$this = $(this),
+						prevAll = $this.prevAll(),
+						tallest = 0;
+
+					if(single_column_mode === false) {
+						current_column = (index % columns);
+					} else {
+						current_column = 0;
+					}
+
+					for(var t = 0; t < columns; t++) {
+						$this.removeClass('c'+t);
+					}
+
+					if(index % columns === 0) {
+						row++;
+					}
+
+					$this.addClass('c' + current_column);
+					$this.addClass('r' + row);
+
+					prevAll.each(function(index) {
+						if($(this).hasClass('c' + current_column)) {
+							top += $(this).outerHeight() + self.options.padding_y;
+						}
+					});
+
+					if(single_column_mode === true) {
+						left_out = 0;
+					} else {
+						left_out = (index % columns) * (article_width + self.options.padding_x);
+					}
+
+					$this.css({
+						'left': left_out,
+						'top' : top
+					});
+				});
+
+				this.tallest($container);
+				$(window).resize();
+			};
+
+			Plugin.prototype.tallest = function (_container) {
+				var column_heights = [],
+					largest = 0;
+
+				for(var z = 0; z < columns; z++) {
+					var temp_height = 0;
+					_container.find('.c'+z).each(function() {
+						temp_height += $(this).outerHeight();
+					});
+					column_heights[z] = temp_height;
+				}
+
+				largest = Math.max.apply(Math, column_heights);
+				_container.css('height', largest + (this.options.padding_y + this.options.margin_bottom));
+			};
+
+			Plugin.prototype.make_layout_change = function (_self) {
+				if($(window).width() < _self.options.single_column_breakpoint) {
+					_self.calculate(true);
+				} else {
+					_self.calculate(false);
+				}
+			};
+
+			$.fn[pluginName] = function (options) {
+				return this.each(function () {
+					if (!$.data(this, 'plugin_' + pluginName)) {
+						$.data(this, 'plugin_' + pluginName,
+						new Plugin(this, options));
+					}
+				});
+			}
+
+		})(jQuery, window, document);
+</script>
+{% endblock %}
+
+{% block javascripts %}
+	{#<script type="text/javascript" src="{{ asset('template/js/jquery-1.9.1.min.js') }}"></script>#}
+	<script>
+			//var checkTable = setInterval(function() {
+				/*$.ajax({
+					type:'POST',
+					url: '{{ path('article_polling') }}',
+					success: function(data) {
+						for(var i=0; i<data.length; i++) {
+							$('.menu-actus-'+data[i].cat).show();
+							$('.menu-actus-'+data[i].cat).text(data[i].nb_article);
+							console.log(data[i].cat + '=>' + data[i].nb_article);
+						}
+
+					}
+				});*/
+			//}, 30000);
+	</script>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+<style>
+
+
+	.recherche #search{
+		width:250px;
+		border-radius:2px;
+
+	}
+	.navbar-nav  li a {
+		text-transform:uppercase;
+		font-size:1em;
+		font-weight:initial;
+		color:#fff;
+		margin-left:2em;
+
+	}
+
+	.dropdown ul.dropdown-menu{
+		text-transform: uppercase;
+		width: 190px;
+	}
+
+	.dropdown ul.dropdown-menu li a {
+		margin-left: 0;
+	}
+
+
+	/*.navbar .dropdown-menu .menu-item-container a{
+		text-transform:uppercase;
+		font-size:1em;
+		font-weight:initial;
+		color: rgba(43, 43, 43, 1);
+		margin-left:2em;
+		margin-right: 2em;
+		margin-top: 1.5em;
+	}*/
+
+	.notification-bubble {
+		display: inline-block;
+		min-width: 10px;
+		padding: 3px 7px;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 1;
+		color: #fff;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		background-color: #f56c7e;
+		border-radius: 10px;
+	}
+
+	.navbar-nav .active a{
+		margin-left:8.2em;
+	}
+
+	#search:focus{
+		width:400px;
+		background:#fff;
+	}
+	#search {
+		-webkit-transition:0.5s;
+		background:#efefef;
+	}
+
+	.pagination ul li{
+		display:inline-block;
+	}
+
+	#content article p img {
+		width:11.05em;
+	}
+
+	#footer{
+		color:#2e2e2e;
+		font-size:0.7em;
+	}
+
+	.menu-top-left ul li a {
+		text-transform:uppercase;
+		font-size:0.7em;
+		color: #2e2e2e;
+	}
+
+	#menu-vertical > li li a {
+		color: #2e2e2e;
+	}
+	.active {
+		margin-left:2.5em;
+	}
+
+	div #header{
+		height:150px;
+		width:1388px;
+		position:fixed;
+	}
+	.fildariane span a:hover{
+		text-decoration:none;
+	}
+
+	.noty-message {
+		min-height: 200px;
+	}
+	
+	@media  (min-width: 2366px)  {
+		#search_form
+		{
+			margin-right:-18em;			
+		}		
+	}
+
+	@media  (max-width: 1366px) {
+		#search_form
+		{
+			
+		}
+	}
+</style>
+
+{% endblock %}
+

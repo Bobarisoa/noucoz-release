@@ -1,0 +1,23 @@
+bloc:
+    path: /
+    defaults: { _controller: "AppCoreBundle:TopArticle:index" }
+
+bloc_list:
+    pattern:  /liste
+    defaults: { _controller: "AppCoreBundle:TopArticle:show" }
+
+bloc_create:
+    pattern:  /ajouter
+    defaults: { _controller: "AppCoreBundle:TopArticle:create" }
+
+bloc_edit:
+    pattern:  /{id}/modifier
+    defaults: { _controller: "AppCoreBundle:TopArticle:edit" }
+    requirements:
+        id: \d+
+        _method: get|put
+
+bloc_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AppCoreBundle:TopArticle:delete" }
+    requirements: { _method: post|get }

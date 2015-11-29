@@ -1,0 +1,15 @@
+parameters:
+#    web_front.example.class: Web\FrontBundle\Example
+
+services:
+  nucoz.socialBarHelper:
+    class : Web\FrontBundle\Templating\Helper\SocialBarHelper
+    tags :
+      - {name : 'templating.helper', alias : 'social-buttons'}
+    arguments : [ @templating ]
+
+  twig.extension.nucoz_social_bar:
+    class:  Web\FrontBundle\Twig\Extension\SocialBar
+    tags:
+        - { name: 'twig.extension' }
+    arguments : [ @service_container ]

@@ -1,0 +1,121 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="row-fluid">
+		<span class="span3">
+			<div class="widget">
+				<div class="navbar">
+					<div class="navbar-inner">
+						<h6>
+							<i class="icon-briefcase"></i>
+							Articles
+						</h6>
+					</div>
+				</div>
+				<div class="well">
+					<div class="section-info">
+						<ul class="statistics" style="padding: 0">
+			    			<li>
+			    				<div class="top-info" style="margin: 0">
+				    				<a href="{{ path('articles') }}" title="Article" class="dark-blue-square" style="margin-bottom: 0"><i class="icon-briefcase"></i></a>
+				    				<strong style="margin-bottom: 0">{{ article|length }}</strong>
+				    			</div>
+								<span>Articles</span>
+			    			</li>
+			    		</ul>
+					</div>
+                                        <table class="table" style="border: none">
+						<tr>
+							<td>
+								<a href="{{ path('articles_create') }}">+ Ajouter une article</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="{{ path('articles') }}">+ Gérer les articles</a>
+							</td>
+						</tr>
+					</table>
+					
+				</div>
+			</div>
+		</span>
+		<span class="span3">
+			<div class="widget">
+				<div class="navbar">
+					<div class="navbar-inner">
+						<h6>
+							<i class="icon-group"></i>
+							Membres
+						</h6>
+					</div>
+				</div>
+				<div class="well">
+					<div class="section-info">
+						<ul class="statistics" style="padding: 0">
+			    			<li>
+			    				<div class="top-info" style="margin: 0">
+				    				<a href="{{ path('utilisateur') }}" title="Membre" class="red-square" style="margin-bottom: 0"><i class="icon-group"></i></a>
+				    				<strong style="margin-bottom: 0">{{ membres|length }}</strong>
+				    			</div>
+								<span>Membres</span>
+			    			</li>
+			    		</ul>
+					</div>
+					<table class="table" style="border: none">
+						<tr>
+							<td>
+								<a href="{{ path('utilisateur_create') }}">+ Ajouter une membre</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="{{ path('utilisateur') }}">+ Gérer les membres</a>
+							</td>
+						</tr>
+						
+					</table>
+				</div>
+			</div>
+			
+		</span>
+		<span class="span3">
+			<div class="widget">
+				<div class="navbar">
+					<div class="navbar-inner">
+						<h6>
+							<i class="icon-cogs"></i>
+							Flux RSS
+						</h6>
+					</div>
+				</div>
+				<div class="well">
+					<div class="section-info">
+						<ul class="statistics" style="padding: 0">
+			    			<li>
+			    				<div class="top-info" style="margin: 0">
+				    				<a href="{{ path('flux_rss') }}" title="Classes" class="red-square" style="margin-bottom: 0"><i class="icon-group"></i></a>
+				    				<strong style="margin-bottom: 0">{{ fluxrss|length }}</strong>
+				    			</div>
+								<span>Flux RSS</span>
+			    			</li>
+			    		</ul>
+					</div>
+					<table class="table" style="border: none">
+						<tr>
+							<td>
+								<a href="{{ path('flux_rss_create') }}">+ Ajouter une flux RSS</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="{{ path('flux_rss') }}">+ Gérer les flux RSS</a>
+							</td>
+						</tr>
+						
+					</table>
+				</div>
+			</div>
+		</span>
+	</div>
+{% endblock %}

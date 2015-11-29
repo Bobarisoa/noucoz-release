@@ -1,0 +1,61 @@
+<?php
+
+namespace App\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\ExecutionContextInterface;
+
+/**
+ * FluxRss
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="App\CoreBundle\Entity\FluxRssRepository")
+ * @UniqueEntity(fields="name", message="Cette nom existe déjà !")
+ */
+class FluxRss
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_site", type="string", length=255)
+     * @Assert\NotNull(
+     *     message = "Le champ ne doit pas être vide."
+     * )
+     */
+    private $nameSite;
+   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link_flux", type="string", length=255)
+     */
+    private $linkFlux;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="category_site", type="string", length=255)
+     */
+    private $categorySite;
+    
+   /**
+     * @var string
+     *
+     * @ORM\Column(name="pays", type="string", length=255)
+     */
+    private $pays;
+ 
+    
+}

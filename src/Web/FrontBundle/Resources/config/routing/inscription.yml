@@ -1,0 +1,6 @@
+inscription:
+     path:     /inscription
+     defaults: { _controller: WebFrontBundle:Inscription:index}
+     
+  
+     

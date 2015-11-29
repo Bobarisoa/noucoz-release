@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="widget row-fluid">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6>{{ title }}</h6>
+                                <a class="btn btn-success pull-right" href="{{ path('utilisateur_create') }}" title="Ajouter un membre"><i class="icon-plus"></i>&nbsp;Ajouter un membre</a>
+			</div>
+		</div>
+		
+		{% if entities is not empty %}
+			<div class="table-overflow">
+			    <table class="table table-striped">
+			        <thead>
+			            <tr>
+			                <th>Nom</th>
+			                <th>Identifiant/Code</th>
+			                <th>Email</th>
+			                <th>Profil</th>
+			                <th>Actions</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        {% for entity in entities %}
+			            <tr>
+			                <td>{{ entity.firstname ~ ' ' ~ entity.lastname }}</td>
+			                <td>{{ entity.username }}</td>
+			                <td>{{ entity.email }}</td>
+			                <td>{{ entity.role.name }}</td>
+			                <td>
+			                    <a class="btn btn-info btn-small" href="{{ path('utilisateur_edit', { 'id': entity.id }) }}" title="Modifier"><i class="icon-pencil icon-white"></i>&nbsp;Modifier</a>
+                                            <a class="btn btn-danger btn-small" href="{{ path('utilisateur_delete', { 'id': entity.id }) }}" data-toggle="confirm" data-loading-text="Chargement ..." title="Supprimer"><i class="icon-trash icon-white"></i>&nbsp;Supprimer</a>
+			                </td>
+			            </tr>
+			        {% endfor %}
+			        </tbody>
+			    </table>
+			</div>
+	    {% else %}
+	    	<div class="well body">
+	    		Aucun membre n'est enregistré !
+			</div>
+	    {% endif %}
+	</div>
+{% endblock %}

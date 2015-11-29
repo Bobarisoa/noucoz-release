@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="widget row-fluid">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6>{{ title }}</h6>
+                <a class="btn btn-success pull-right" href="{{ path('ajout_sondage') }}" title="Ajouter un sondage"><i class="icon-plus"></i>&nbsp;Ajouter sondage</a>
+			</div>
+		</div>
+		
+		{% if sondage is not empty %}
+			<div class="table-overflow">
+			    <table class="table table-striped">
+			        <thead>
+			            <tr>
+			                <th>Question</th>
+			                <th>Reponse</th>
+			                <th>Actions</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+
+			        {% for sondages in sondage %}
+			            <tr>
+				            <td>
+				            	{{ sondages.question }}				            	
+				            </td>
+			                <td>
+			                	{{ sondages.reponse }}		
+			                </td>
+			                <td>
+			                	<form method="POST" action="{{ path('sondage') }}">
+			                	<a class="btn btn-info btn-small" href="{{ path('modifier_sondage',{ 'id': sondages.id })}}"><i class="icon-pencil icon-white"></i>&nbsp;Modifier</a>
+			                	
+			               
+                                <button type="submit"  class="btn btn-danger btn-small"><input type="hidden" name="id_txt" value="{{ sondages.id}}"><i class="icon-trash icon-white"></i>&nbsp;Supprimer</button>&nbsp;&nbsp;
+                                </form>
+                               
+			                </td>
+			            </tr>
+			        {% endfor %}
+			        </tbody>
+			    </table>
+			</div>
+	    {% else %}
+	    	<div class="well body">
+	    		Aucun sondage trouvée !
+			</div>
+	    {% endif %}
+	</div>
+	
+{% endblock %}
+
+

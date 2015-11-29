@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="widget row-fluid">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6>{{ title }}</h6>
+                
+			</div>
+		</div>
+		
+		<form method="POST" action="{{ path('sondage') }}">
+			<div class="table-overflow">
+				</br></br>	
+				<div class="input-group">
+					<label>Question</label>
+					<input type="text" name="question_txt" class="form-control" style="width:45em">
+				</div>
+				</br>	  
+			  	<div class="input-group">
+					<label>Reponse</label>
+					<input type="text" name="reponse_txt" class="form-control" style="width:45em">
+				</div>	        
+				</br>
+			    <div class="input-group">
+			    	<label>Categorie</label>
+					<select name="categorie_txt">	        	
+						{%  for categories in categorie %}
+							<option value="{{ categories.id }}">{{ categories.nom }}</option>
+						{% endfor %}
+					</select>
+				</div>	
+				</br></br>
+				<div class="input-group">
+					<input type="submit" name="sonder" class="btn btn-success" value="ENREGITRER">
+				</div>        
+			</div>
+		</form>
+	   
+	</div>
+	
+{% endblock %}
+
+
+

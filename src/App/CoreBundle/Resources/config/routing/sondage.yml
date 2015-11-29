@@ -1,0 +1,17 @@
+sondage:
+    pattern:  /liste
+    defaults: { _controller: "AppCoreBundle:Dashboard:listeSondage" } 
+
+ajout_sondage:
+    pattern:  /ajout
+    defaults: { _controller: "AppCoreBundle:Dashboard:ajoutSondage" } 
+
+modifier_sondage:
+    pattern: /modifier/{id}
+    defaults: { _controller: "AppCoreBundle:Dashboard:modifierSondage" }  
+
+suppimer_sondage:
+    pattern: /supprimer         
+    defaults: { _controller: "AppCoreBundle:Dashboard:supprimerSondage" }
+
+

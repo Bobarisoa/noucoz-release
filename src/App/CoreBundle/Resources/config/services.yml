@@ -1,0 +1,105 @@
+parameters:
+#    app_core.example.class: App\CoreBundle\Example
+
+services:
+#    app_core.example:
+#        class: %app_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    #Kill the bot        
+    controller:
+        class: App\CoreBundle\Listener\Controller
+        arguments:
+            - @service_container
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+    #Sidebar menu          
+    menu:
+        class: App\CoreBundle\Menu\RequestVoter
+        arguments:
+            - @service_container
+        tags:
+            - { name: knp_menu.voter }
+    #Confirm service        
+    confirm:
+        class: App\CoreBundle\Services\Confirm\Confirm
+        arguments:
+            - @twig
+    
+    #String Transformer service    
+    stringtransformer:
+        class: App\CoreBundle\Services\String\Transformer
+    
+    #Twig filter
+    app.twig.typo_extension:
+        class: App\CoreBundle\Twig\Typo
+        tags:
+            - { name: twig.extension }
+    
+#    app.twig.volstarif_extension:
+#        class: App\CoreBundle\Twig\GetVolsTarif
+#        arguments:
+#            doctrine: "@doctrine"
+#        tags:
+#            - { name: twig.extension }
+
+    app.twig.pnr_extension:
+        class: App\CoreBundle\Twig\Pnr
+        arguments:
+            doctrine: "@doctrine"
+            serviceContainer : "@service_container"
+        tags:
+            - { name: twig.extension }
+
+    app.twig.settings_extension:
+        class: App\CoreBundle\Twig\Settings
+        arguments:
+            serviceContainer : "@service_container"
+        tags:
+            - { name: twig.extension }
+            
+    app.twig.siege_extension:
+        class: App\CoreBundle\Twig\Siege
+        arguments:
+            doctrine: "@doctrine"
+        tags:
+            - { name: twig.extension }
+ 
+    #Client service
+    client_service:
+         class:  App\CoreBundle\Services\Client\Client
+         arguments: 
+            entityManager: "@doctrine.orm.entity_manager"
+    
+    #Settings service
+    settings_service:
+         class:  App\CoreBundle\Services\Settings\Settings
+         arguments: 
+            entityManager: "@doctrine.orm.entity_manager"
+            
+    #Pnr service
+    pnr_service:
+         class:  App\CoreBundle\Services\Pnr\Core
+         arguments: ["@doctrine.orm.entity_manager","@service_container"]
+            
+    #Vols service
+    vols_service:
+         class:  App\CoreBundle\Services\Vols\Vols
+         arguments: 
+            entityManager: "@doctrine.orm.entity_manager"
+    #Utilisateur service
+    utilisateur_service:
+         class:  App\CoreBundle\Services\Utilisateur\Utilisateur
+         arguments: 
+            entityManager: "@doctrine.orm.entity_manager"
+    #Listener
+#    pdv.listener:
+#        class: App\CoreBundle\Listener\PlanDeVols
+#        tags:
+#            - { name: doctrine.event_listener, event: postPersist, connection: default }
+#            - { name: doctrine.event_listener, event: postUpdate, connection: default }
+    pnr.listener:
+        class: App\CoreBundle\Listener\Pnr
+        arguments: ['@service_container']
+        tags:
+            - { name: doctrine.event_listener, event: postPersist, connection: default }
+            - { name: doctrine.event_listener, event: postUpdate, connection: default }

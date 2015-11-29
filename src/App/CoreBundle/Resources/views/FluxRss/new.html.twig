@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="widget row-fluid">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6>{{ title }}</h6>
+			</div>
+		</div>
+		
+		<div class="well">
+		    <form class="form-horizontal" action="{{ path('flux_rss_create') }}" method="post" {{ form_enctype(form) }}>
+				{% include "AppCoreBundle:FluxRss:form.html.twig" %}
+		        
+		        <div class="control-group">
+		        	<div class="controls">
+		        		<button type="submit" class="btn btn-success">Ajouter</button>
+		        	</div>
+		        </div>
+		    </form>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,756 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Accueil</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Organiser</source>
+                <target>Organize</target>
+            </trans-unit>       
+            <trans-unit id="3">
+                <source>Réserver</source>
+                <target>book</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Gérer</source>
+                <target>manage</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Au sol</source>
+                <target>floor</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>En vol</source>
+                <target>flying</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Sélection Vol</source>
+                <target>Flight selection</target>
+            </trans-unit>
+             <trans-unit id="8">
+                <source>Vérification vol</source>
+                <target>flight check</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Détails passagers</source>
+                <target>passenger details</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Paiement</source>
+                <target>ayment</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Confirmation</source>
+                <target>Confirmation</target>
+            </trans-unit>
+             <trans-unit id="12">
+                <source>Votre reservation</source>
+                <target>Your booking</target>
+            </trans-unit>
+             <trans-unit id="13">
+                <source>Votre reservation est</source>
+                <target>Your booking is</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Détails Vol</source>
+                <target>Flight details</target>
+            </trans-unit>
+             <trans-unit id="15">
+                <source>Reservation reference</source>
+                <target>Booking reference</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>S'il vous plaît noter: votre réservation sera confirmée seulement après cette étape est validée et votre paiement a été effectué. Soyez sûr de garder votre numéro de référence, 
+            qui sera nécessaire pour toutes les interactions avec Air France.</source>
+                <target>Please note: your reservation will be confirmed only after this stage is validated and your payment has been made. Be sure to keep your reference number,
+             that will be required for all interactions with Air France.</target>
+            </trans-unit>
+             <trans-unit id="19">
+                <source>Passager</source>
+                <target>Passenger</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Votre date de départ</source>
+                <target>Your departure date</target>
+            </trans-unit>
+             <trans-unit id="21">
+                <source>Durée total du vol</source>
+                <target>Total flight duration</target>
+            </trans-unit>
+             <trans-unit id="22">
+                <source>Vols N°</source>
+                <target>No. Flights</target>
+            </trans-unit>
+             <trans-unit id="23">
+                <source>Votre date de retour</source>
+                <target>Your return date</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>à</source>
+                <target>to</target>
+            </trans-unit>
+             <trans-unit id="25">
+                <source>Choisir votre méthode de paiement</source>
+                <target>Choose your payment method</target>
+            </trans-unit>
+             <trans-unit id="26">
+                <source>Débit ou carte de crédit</source>
+                <target>Debit or credit card</target>
+            </trans-unit>
+             <trans-unit id="27">
+                <source>Type de carte</source>
+                <target>Card type</target>
+            </trans-unit>
+             <trans-unit id="28">
+                <source>Gratuit</source>
+                <target>Free</target>
+            </trans-unit>
+             <trans-unit id="29">
+                <source>Paypal</source>
+                <target>Paypal</target>
+            </trans-unit>
+             <trans-unit id="30">
+                <source>Maestro</source>
+                <target>Maestro</target>
+            </trans-unit>
+             <trans-unit id="31">
+                <source>Noter que des frais supplémentaires peuvent être appliqués à cette méthode de payement</source>
+                <target>Note that additional charges may be applied to this payment method</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Total à payer</source>
+                <target>Total to pay</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>Notez SVP!</source>
+                <target>Please note</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>Le nom des passagers ne peut être modifiée après la réservation est terminée. South African Airways nécessite noms de voyageurs à saisir exactement
+tels qu'ils apparaissent dans le document Passeport / Identité espaces compris, le cas échéant. Le défaut de se conformer à cette entraînera le voyageur étant nié Voyage
+ou d'avoir à acheter un nouveau billet au tarif applicable disponible.</source>
+                <target>The name of the passenger may be modified after the reservation is completed. South African Airways requires travelers to enter names exactly
+as they appear in the document Passport / ID with spaces, if necessary. Failure to comply with this will result in the passenger being denied travel
+or having to buy a new ticket at the applicable fare available.</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Continuer</source>
+                <target>Continue</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Spécifier vos voyageurs</source>
+                <target>Specify your travelers</target>
+            </trans-unit>
+               <trans-unit id="37">
+                <source>Liste des passagers</source>
+                <target>Passenger list</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>Ajout des passagers</source>
+                <target>Adding passanger</target>
+            </trans-unit>
+               <trans-unit id="39">
+                <source>Informations Légales</source>
+                <target>Legal Information</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>Termes et conditions de réservation et d'émission de billets</source>
+                <target>Terms and conditions of booking and ticketing </target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>Conditions du contrat</source>
+                <target>Conditions of Contract</target>
+            </trans-unit>
+               <trans-unit id="42">
+                <source>Contrat de transport</source>
+                <target>Contract of Carriage</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>Frais et services optionnels sur Vols en partage de code</source>
+                <target>Fees and optional services on codeshare flights</target>
+            </trans-unit>
+               <trans-unit id="44">
+                <source>Politique bagage</source>
+                <target>Luggage policy</target>
+            </trans-unit>
+               <trans-unit id="45">
+                <source>A propos de</source>
+                <target>About</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>A propos de MADAGASIKARA AIRWAYS Communiqués de presse</source>
+                <target>About MADAGASIKARA AIRWAYS Press Releases</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>Suivez-nous</source>
+                <target>Follow us</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>Horaires</source>
+                <target>schedule</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>VOLS</source>
+                <target>flights</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>Conditions</source>
+                <target>Terms</target>
+            </trans-unit>
+            
+            <trans-unit id="51">
+                <source>Aéroport de départ</source>
+                <target>Departure airport</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>De</source>
+                <target>From</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>Aéroport d'arrivée</source>
+                <target>Arrival airport</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>Allez-retour</source>
+                <target>Go back</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>Allez-simple</source>
+                <target>Go easy</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>Multi-ville</source>
+                <target>Multi-city</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>Date de départ</source>
+                <target>Date of departure</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>Date de retour</source>
+                <target>Return Date</target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>Senior</source>
+                <target>Senior</target>
+            </trans-unit>
+            <trans-unit id="60">
+                <source>Adulte</source>
+                <target>Adult</target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>Jeune</source>
+                <target>Young</target>
+            </trans-unit>
+            
+            <trans-unit id="62">
+                <source>Enfant</source>
+                <target>Child</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>Bébé</source>
+                <target>baby</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>Classe</source>
+                <target>Class</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>Enregistrement-en-ligne de 24 heures à 1 heure avant le départ du vol. Consultez la liste des aéroports où ce service est proposé.</source>
+                <target>Online-Registration 24 hours to 1 hour before flight departure. Check the list of airports where this service is available.</target>
+            </trans-unit>
+            
+            <trans-unit id="66">
+                <source>THAI se réserve le droit de refuser un passager à l'embarquement si ses documents de voyage sont incomplets.</source>
+                <target>THAI reserves the right to refuse a passenger boarding if their travel documents are incomplete.</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>Indiquez la référence de votre réservation et votre nom de famille afin de consulter votre dossier. 
+                        Vous pourrez réserver ou modifier votre siège, commander un repas spécial, indiquer votre numéro Royal Orchid Plus, communiquer vos infos de contacts.</source>
+                <target>Enter the reference of your reservation and your surname to view your file. You can book or change your seat, order a special meal, indicate your Royal Orchid Plus number, provide your contact information.</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>Réference de réservation</source>
+                <target>Booking Reference</target>
+            </trans-unit>
+              <trans-unit id="69">
+                <source>Nom de famille</source>
+                <target>Last name</target>
+            </trans-unit>
+              <trans-unit id="70">
+                <source>Voir ma reservation</source>
+                <target>See my booking</target>
+            </trans-unit>
+              <trans-unit id="71">
+                <source>Trouver les vols</source>
+                <target>Find flights</target>
+            </trans-unit>
+            
+            <trans-unit id="72">
+                <source>Message de confirmation</source>
+                <target>Confirmation message</target>
+            </trans-unit>
+              <trans-unit id="73">
+                <source>Confirmée</source>
+                <target>Confirmed</target>
+            </trans-unit>
+              <trans-unit id="74">
+                <source>Nous vous confirmons que votre reservation de vol a était bien effectué. Un email contenant votre billet élèctronique et votre facture
+            vous a été envoyer à l'adresse email que vous aviez nous fournit. Veuillez notez vote référence de réservation</source>
+                <target>We confirm that your flight booking was was well made. An email containing your e-ticket and your invoice
+             You were send to the email address you provide us. Please keep your booking number.</target>
+            </trans-unit>
+              <trans-unit id="75">
+                <source>Vous pouvez télécharger et imprimer votre billet élèctronique et facture ici.</source>
+                <target>You can download and print your e-ticket and receipt here.</target>
+            </trans-unit>
+                <trans-unit id="76">
+                <source>Télécharger Billet</source>
+                <target>Download Tickets</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>Télécharger Facture</source>
+                <target>Download Invoice</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>Vols et options tarifaires</source>
+                <target>Flights tariff and options</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>Voyageurs</source>
+                <target>Travelers</target>
+            </trans-unit>
+            <trans-unit id="80">
+                <source>Modifier la recherche</source>
+                <target>Edit search</target>
+            </trans-unit>
+            <trans-unit id="81">
+                <source>Sélectionnez vos dates de voyage en fonction des prix les moins élevés affichés ci-dessous. Les tarifs peuvent varier en fonction de la sélection. Les montants affichés représentent le prix total taxes,
+                 frais et suppléments inclus par adulte sur le vol sélectionné.</source>
+                <target>
+Select your travel dates based on the lowest prices shown below. Rates may vary depending on the selection. Amounts shown are the total price taxes,
+                  fees and surcharges included per adult on the selected flight.</target>
+            </trans-unit>
+            <trans-unit id="82">
+                <source>Les tarifs retour indiqués nécessitent l’achat d’un aller-retour.</source>
+                <target>The return rates indicated require the purchase of a return ticket.</target>
+            </trans-unit>
+            <trans-unit id="83">
+                <source>Enter.Car.Details</source>
+                <target>maxMessage </target>
+            </trans-unit>
+            <trans-unit id="84">
+                <source>Lundi</source>
+                <target>Monday</target>
+            </trans-unit>
+            <trans-unit id="85">
+                <source>Mardi</source>
+                <target>Tuesday</target>
+            </trans-unit>
+            <trans-unit id="86">
+                <source>Mercredi</source>
+                <target>Wednesday</target>
+            </trans-unit>
+            <trans-unit id="87">
+                <source>Jeudi</source>
+                <target>Thursday</target>
+            </trans-unit>
+            <trans-unit id="88">
+                <source>Vendredi</source>
+                <target>Friday</target>
+            </trans-unit>
+            <trans-unit id="89">
+                <source>Samedi</source>
+                <target>Saturday</target>
+            </trans-unit>
+            <trans-unit id="90">
+                <source>Dimanche</source>
+                <target>Sunday</target>
+            </trans-unit>
+            <trans-unit id="91">
+                <source>à partir de</source>
+                <target>From</target>
+            </trans-unit>
+            <trans-unit id="92">
+                <source>Contact</source>
+                <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="93">
+                <source>Réservez votre vols dès maintenant</source>
+                <target>Book your flight now</target>
+            </trans-unit>
+            <trans-unit id="94">
+                <source>Votre voyage</source>
+                <target>Your trip</target>
+            </trans-unit>
+            <trans-unit id="95">
+                <source>Réservez votre vols dès maintenant</source>
+                <target>Book your flight now</target>
+            </trans-unit>
+              <trans-unit id="96">
+                <source>Votre vol aller</source>
+                <target>Your airfare</target>
+            </trans-unit>
+            <trans-unit id="97">
+                <source>Votre vol retour</source>
+                <target>Your return flight</target>
+            </trans-unit>
+            <trans-unit id="98">
+                <source>Nombre de passagers</source>
+                <target>Number of passengers</target>
+            </trans-unit>
+            <trans-unit id="99">
+                <source>le</source>
+                <target>the</target>
+            </trans-unit>
+            <trans-unit id="100">
+                <source>vers</source>
+                <target>to</target>
+            </trans-unit>
+              <trans-unit id="101">
+                <source>Aucun vols... Veuiller choisir une autre date!</source>
+                <target>No flights ... Kindly select another date!</target>
+            </trans-unit>
+            <trans-unit id="102">
+                <source>resultats trouvés</source>
+                <target>results found</target>
+            </trans-unit>
+            <trans-unit id="103">
+                <source>Réserver votre  billet</source>
+                <target>Reserve your ticket</target>
+            </trans-unit>
+            <trans-unit id="104">
+                <source>Réservez votre billet rapidement en ligne</source>
+                <target>Book your ticket online fast</target>
+            </trans-unit>
+            <trans-unit id="105">
+                <source>Classe tarifaire</source>
+                <target>Price class</target>
+            </trans-unit>
+            <trans-unit id="106">
+                <source>Conditions tarifaires</source>
+                <target>Pricing conditions</target>
+            </trans-unit>
+            <trans-unit id="107">
+                <source>Type</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="108">
+                <source>Sexe</source>
+                <target>Sex</target>
+            </trans-unit>
+            <trans-unit id="109">
+                <source>Nom</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="110">
+                <source>Prénom</source>
+                <target>Firstname</target>
+            </trans-unit>
+               <trans-unit id="111">
+                <source>Nationalité</source>
+                <target>Nationality</target>
+            </trans-unit>
+            <trans-unit id="112">
+                <source>Pièce d'identité</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="113">
+                <source>N° d'identité</source>
+                <target>Identity number</target>
+            </trans-unit>
+            
+            <trans-unit id="114">
+                <source>Date de naissance</source>
+                <target>Date of birth</target>
+            </trans-unit>
+            <trans-unit id="115">
+                <source>Numéro à contacter</source>
+                <target>Contact number</target>
+            </trans-unit>
+            <trans-unit id="116">
+                <source>Type de boisson</source>
+                <target>Type of drink</target>
+            </trans-unit>
+            <trans-unit id="117">
+                <source>Choisissez une nationalité</source>
+                <target>Choose a nationality</target>
+            </trans-unit>
+            <trans-unit id="118">
+                <source>Choisissez une piece</source>
+                <target>Choose a room</target>
+            </trans-unit>
+            <trans-unit id="119">
+                <source>votre@email.mg</source>
+                <target>your@email.mg</target>
+            </trans-unit>
+             <trans-unit id="120">
+                <source>A propos</source>
+                <target>About Us</target>
+            </trans-unit>
+            <trans-unit id="121">
+                <source>Nos coordonnées</source>
+                <target>Our contact details</target>
+            </trans-unit>
+            <trans-unit id="122">
+                <source>Nos coordonnées</source>
+                <target>Our contact details</target>
+            </trans-unit>
+            <trans-unit id="123">
+                <source>Envoyer</source>
+                <target>Send</target>
+            </trans-unit>
+            <trans-unit id="124">
+                <source>Formulaire de contact</source>
+                <target>Form contact</target>
+            </trans-unit>
+            <trans-unit id="125">
+                <source>Nom et Prénom(s) *</source>
+                <target>Fullname *</target>
+            </trans-unit>
+             <trans-unit id="126">
+                <source>Sujet</source>
+                <target>Subject</target>
+            </trans-unit>
+             <trans-unit id="127">
+                <source>Réservez votre vols dès maintenant</source>
+                <target>Book your flight now</target>
+            </trans-unit>
+            <trans-unit id="128">
+                <source>Choisir votre ville</source>
+                <target>Choose your city</target>
+            </trans-unit>
+            <trans-unit id="129">
+                <source>Choisir votre type de voyage</source>
+                <target>Choose your type of trip</target>
+            </trans-unit>
+            <trans-unit id="130">
+                <source>Choisir votre date</source>
+                <target>Choose your date</target>
+            </trans-unit>
+            <trans-unit id="131">
+                <source>Choisir le nombre de passager</source>
+                <target>Select the number of passenger</target>
+            </trans-unit>
+            <trans-unit id="132">
+                <source>Départ</source>
+                <target>Departure</target>
+            </trans-unit>
+            <trans-unit id="133">
+                <source>Retour</source>
+                <target>Return</target>
+            </trans-unit>
+            <trans-unit id="134">
+                <source>Réservez mon voyage</source>
+                <target>Book My Trip</target>
+            </trans-unit>
+            <trans-unit id="135">
+                <source>Envoyez nous votre CV</source>
+                <target>Send us your CV</target>
+            </trans-unit>
+            <trans-unit id="136">
+                <source>Gérer mon voyage</source>
+                <target>Manage My Trip</target>
+            </trans-unit>
+            <trans-unit id="137">
+                <source>Enregistrer</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="138">
+                <source>Gérer mon voyage</source>
+                <target>Manage My Trip</target>
+            </trans-unit>
+            <trans-unit id="139">
+                <source>Mois *</source>
+                <target>Month *</target>
+            </trans-unit>
+            <trans-unit id="140">
+                <source>Mois</source>
+                <target>Month</target>
+            </trans-unit>
+            <trans-unit id="141">
+                <source>Année *</source>
+                <target>Year *</target>
+            </trans-unit>
+            <trans-unit id="142">
+                <source>Année</source>
+                <target>Year</target>
+            </trans-unit>
+            <trans-unit id="143">
+                <source>Poste demandé *</source>
+                <target>Position sought *</target>
+            </trans-unit>
+            <trans-unit id="144">
+                <source>Poste demandé</source>
+                <target>Position sought</target>
+            </trans-unit>
+            <trans-unit id="145">
+                <source>Disponibilité *</source>
+                <target>Availability *</target>
+            </trans-unit>
+            <trans-unit id="146">
+                <source>Disponibilité</source>
+                <target>Availability</target>
+            </trans-unit>
+            <trans-unit id="147">
+                <source>Situation de Famille *</source>
+                <target>Family status *</target>
+            </trans-unit>
+            <trans-unit id="148">
+                <source>Situation de Famille</source>
+                <target>Family status</target>
+            </trans-unit>
+            <trans-unit id="149">
+                <source>Nom *</source>
+                <target>Name *</target>
+            </trans-unit>
+            <trans-unit id="150">
+                <source>Prénom *</source>
+                <target>Firstname *</target>
+            </trans-unit>
+            <trans-unit id="151">
+                <source>Adresse *</source>
+                <target>Address *</target>
+            </trans-unit>
+            <trans-unit id="152">
+                <source>Adresse</source>
+                <target>Address</target>
+            </trans-unit>
+            <trans-unit id="153">
+                <source>Téléphone *</source>
+                <target>Phone *</target>
+            </trans-unit>
+            <trans-unit id="154">
+                <source>Téléphone</source>
+                <target>Phone</target>
+            </trans-unit>
+            <trans-unit id="155">
+                <source>Nationalité *</source>
+                <target>Nationality *</target>
+            </trans-unit>
+            <trans-unit id="156">
+                <source>Date début</source>
+                <target>Start date</target>
+            </trans-unit>
+            <trans-unit id="157">
+                <source>Date fin</source>
+                <target>End date</target>
+            </trans-unit>
+            <trans-unit id="158">
+                <source>Diplômes, attestation, certificat</source>
+                <target>Qualifications, attestation, certificate</target>
+            </trans-unit>
+            <trans-unit id="159">
+                <source>Domaines d'études, spécialités</source>
+                <target>Fields of study, specialties</target>
+            </trans-unit>
+            <trans-unit id="160">
+                <source>Employeur</source>
+                <target>Employer</target>
+            </trans-unit>
+            <trans-unit id="161">
+                <source>Poste occupé</source>
+                <target>Position held</target>
+            </trans-unit>
+            <trans-unit id="162">
+                <source>Rechercher votre vol</source>
+                <target>Find your flight</target>
+            </trans-unit>
+                 <trans-unit id="163">
+                <source>Du</source>
+                <target>of the</target>
+            </trans-unit>
+            <trans-unit id="164">
+                <source>Au</source>
+                <target>To</target>
+            </trans-unit>
+            <trans-unit id="165">
+                <source>Ecrire</source>
+                <target>Write</target>
+            </trans-unit>
+            <trans-unit id="166">
+                <source>Parler</source>
+                <target>Speak</target>
+            </trans-unit>
+            <trans-unit id="167">
+                <source>Comprendre</source>
+                <target>Understand</target>
+            </trans-unit>
+            <trans-unit id="168">
+                <source>AUTRES(à préciser)</source>
+                <target>Other(specify)</target>
+            </trans-unit>
+                 <trans-unit id="169">
+                <source>Date fin</source>
+                <target>End date</target>
+            </trans-unit>
+            <trans-unit id="170">
+                <source>Diplômes, attestation, certificat</source>
+                <target>Qualifications, attestation, certificate</target>
+            </trans-unit>
+            <trans-unit id="171">
+                <source>Domaines d'études, spécialités</source>
+                <target>Fields of study, specialties</target>
+            </trans-unit>
+            <trans-unit id="172">
+                <source>Résultat de votre recherche</source>
+                <target>Search results</target>
+            </trans-unit>
+            <trans-unit id="173">
+                <source>Vols du Date du</source>
+                <target>Flights Date</target>
+            </trans-unit>
+            <trans-unit id="174">
+                <source>Description et synthèse des attributions</source>
+                <target>Description and summary of allocations</target>
+            </trans-unit>
+            <trans-unit id="175">
+                <source>Aucun résultat corresponds à votre recherche.</source>
+                <target>No results matching your search.</target>
+            </trans-unit>
+            <trans-unit id="176">
+                <source>Horaires du vol</source>
+                <target>Flight schedule</target>
+            </trans-unit>
+            <trans-unit id="177">
+                <source>Confirmer le paiement</source>
+                <target>Confirm payment</target>
+            </trans-unit>
+            <trans-unit id="178">
+                <source>Mode de paiement</source>
+                <target>Payment method</target>
+            </trans-unit>
+            <trans-unit id="179">
+                <source>Détails du tarif</source>
+                <target>Pricing</target>
+            </trans-unit>
+            <trans-unit id="180">
+                <source>Billet</source>
+                <target>Eticket</target>
+            </trans-unit>
+            <trans-unit id="181">
+                <source>Impôt et frais</source>
+                <target>Taxes and Fees</target>
+            </trans-unit>
+            <trans-unit id="182">
+                <source>passager</source>
+                <target>passenger</target>
+            </trans-unit>
+            <trans-unit id="183">
+                <source>Aucun vols n'est disponible à la date sélectionnée. Veuiller changer de date.</source>
+                <target>No flight available fot the selected date. Please try another date</target>
+            </trans-unit>
+            <trans-unit id="184">
+                <source>Départ du</source>
+                <target>Takeoff At</target>
+            </trans-unit>
+            <trans-unit id="185">
+                <source>Arrivée le</source>
+                <target>Landing At</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

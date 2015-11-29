@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="widget row-fluid">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <h6>{{ title }}</h6>
+                <a class="btn btn-success pull-right" href="{{ path('pays_create') }}" title="Ajouter un pays"><i class="icon-plus"></i>&nbsp;Ajouter un pays</a>
+            </div>
+        </div>
+
+        {% if entities is not empty %}
+            <div class="table-overflow">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Code</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td>{{ entity.name }}</td>
+                            <td>{{ entity.code }}</td>
+                            <td>
+                                <a class="btn btn-info btn-small" href="{{ path('pays_edit', { 'id': entity.id }) }}" title="Modifier"><i class="icon-pencil icon-white"></i>&nbsp;Modifier</a>
+                                <a class="btn btn-danger btn-small" data-href="{{ path('pays_delete', { 'id': entity.id }) }}" data-toggle="delete-confirm" data-popout="true" title="Etes-vous s&ucirc;r?" style="cursor: pointer;"><i class="icon-trash icon-white"></i>&nbsp;Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="well body">
+                Aucun pays n'est enregistré !
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

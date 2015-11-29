@@ -1,0 +1,82 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="widget row-fluid">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6>{{ title }}</h6>
+                
+			</div>
+		</div>
+		
+		<form method="POST" action="{{ path('sondage') }}">
+			<div class="table-overflow">
+				</br></br>	
+				<div class="input-group">
+					<label>Question</label>
+					<input type="text" name="question_txt" class="form-control" value = "{{ sondage.question }}" style="width:45em">
+				</div>
+				</br>	  
+			  	<div class="input-group">
+					<label>Reponse</label>
+					<input type="text" name="reponse_txt" class="form-control" style="width:45em" value = "{{ sondage.reponse }}">
+				</div>	        
+				</br>
+			    <div class="input-group">
+			    	<label>Categorie</label>
+					<select name="categorie_txt">	
+						{% if sondage.type == 1 %}        	
+						<option value="{{ sondage.type }}" selected>Sports</option>
+						<option value="2" >Musique</option>
+						<option value="3" >Divertissement</option>
+						<option value="4" >High Tech</option>
+						<option value="5" >Santé</option>
+						{% endif %}
+
+						{% if sondage.type == 2 %}    
+						<option value="{{ sondage.type }}" selected>Musique</option> 
+						<option value="1" >Sports</option>
+						<option value="3" >Divertissement</option>
+						<option value="4" >High Tech</option>
+						<option value="5" >Santé</option>   	
+						{% endif %}
+
+						{% if sondage.type == 3 %}  
+						<option value="{{ sondage.type }}" selected>Divertissement</option>
+						<option value="1" >Sports</option>
+						<option value="2" >Musique</option>
+						<option value="4" >High Tech</option>
+						<option value="5" >Santé</option>       	
+						{% endif %} 
+
+						{% if sondage.type == 4 %} 
+						<option value="{{ sondage.type }}" selected>High Tech</option>       
+						<option value="1" >Sports</option>
+						<option value="2" >Musique</option>
+						<option value="3" >Diverstissement</option>
+						<option value="5" >Santé</option> 	
+						{% endif %}
+
+						{% if sondage.type == 5 %} 
+						<option value="{{ sondage.type }}" selected>Santé</option>    
+						<option value="1" >Sports</option>
+						<option value="2" >Musique</option>
+						<option value="3" >Divertissement</option>
+						<option value="4" >High Tech</option>
+						{% endif %}  
+
+					</select>
+				</div>	
+				</br></br>
+				<div class="input-group">
+					<input type="submit" name="sonder" class="btn btn-success" value="MODIFIER">
+				</div>        
+			</div>
+		</form>
+	   
+	</div>
+	
+{% endblock %}
+
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Connexion</title>
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" charset="utf-8">
+        <link rel="stylesheet" href="{{ asset('css/login.css') }}" type="text/css" charset="utf-8">
+    </head>
+    <body class="no-background">
+
+		<!-- Content -->
+		<div id="content">	
+		
+			<!-- Form sign-in -->
+			<div class="form-signin">		
+				
+				{% if errors.0.message is defined %}
+					{% for error in errors %}
+					<div class="alert alert-{% if error.status is defined %}success{% else %}danger{% endif %}">{{ error.message }}</div>
+					{% endfor %}
+				{% elseif errors.message is defined  %}
+					<div class="alert alert-{% if errors.status is defined %}success{% else %}danger{% endif %}">{{ errors.message }}</div>
+				{% endif %}
+				
+				<form class="form" action="{{ path('forget') }}" method="post">
+					<div class="widget row-fluid">
+						<div class="navbar navbar-tabs">
+							<div class="navbar-inner">
+								<h6>Mot de passe oublié</h6>
+								<ul class="nav nav-tabs pull-right">
+									<li>
+										<a href="{{ path('login') }}" title="Connexion">Connexion</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="well">
+							<div class="control-group">
+								<label for="username">Adresse email</label>
+								<div class="input-prepend input-block-level">
+									<span class="add-on"><i class="icon-user"></i></span>
+									{{ form_widget(form.email) }}
+								</div>
+							</div>
+							<div class="control-group">
+								<button class="btn btn-block btn-success" type="submit">Envoyer</button>
+							</div>
+						</div>
+					</div>
+					
+					{{ form_rest(form) }}
+				</form>
+				
+		    </div>
+		    <!-- /form sign-in -->
+		    
+		</div>
+		<!-- /content -->
+		
+    </body>
+</html>

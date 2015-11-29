@@ -1,0 +1,46 @@
+{% if liste is not empty %}
+        <form action="{{ path('utilisateur_show_historique', {'id': id}) }}" method="post">
+		{% if options['type'] is defined %}
+                    <input type="hidden" name="type" value="{{ options['type'] }}" />
+		{% endif %}
+                {% if options['description'] is defined %}
+                    <input type="hidden" name="description" value="{{ options['description'] }}" />
+		{% endif %}
+		{% if options['DateDu'] is defined %}
+                <input type="hidden" name="DateDu" value="{{ options['DateDu'] }}" />
+                {% endif %}
+                {% if options['DateAu'] is defined %}
+                    <input type="hidden" name="DateAu" value="{{ options['DateAu'] }}" />
+                {% endif %}
+                
+                <div class="table-overflow">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Déscription</th>
+                                <th>Détails</th>
+                                <th>Lien</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for entity in liste %}
+                            <tr>
+                                <td>{{ entity.createdAt| date('D, d/m') }}</td>
+                                <td>{{ entity.type }}</td>
+                                <td>{{ entity.description }}</td>
+                                <td>{{ entity.details }}</td>
+                                <td>{{ entity.link }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+	    
+	</form>
+{% else %}
+	<div class="well body">
+		Aucune historique n'est enregistrée !
+	</div>
+{% endif %}

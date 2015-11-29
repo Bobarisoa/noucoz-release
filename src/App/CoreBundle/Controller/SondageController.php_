@@ -1,0 +1,25 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: heritiana
+ * Date: 22/10/2015
+ * Time: 08:49
+ */
+
+namespace App\CoreBundle\Controller;
+
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use App\CoreBundle\Entity\Utilisateur;
+use App\CoreBundle\Form\UtilisateurType;
+use Symfony\Component\HttpFoundation\Response;
+
+
+class SondageController extends Controller
+{
+	public function listeSondageAction()
+	{
+		return new Response('ok');
+	}
+}

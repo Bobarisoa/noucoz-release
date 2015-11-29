@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="widget row-fluid">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6>{{ title }}</h6>
+			</div>
+		</div>
+		
+		<div class="well">    
+		    <form class="form-horizontal" action="{{ path('flux_rss_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
+		        <input type="hidden" name="_method" value="PUT" />
+				{% include "AppCoreBundle:FluxRss:form.html.twig" %}
+		        
+		        <div class="control-group">
+		        	<div class="controls">
+		        		<button type="submit" class="btn btn-success">Modifier</button>
+		        	</div>
+		        </div>
+		    </form>
+		</div>
+	</div>
+{% endblock %}

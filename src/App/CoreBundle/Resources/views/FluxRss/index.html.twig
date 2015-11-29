@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="widget">
+			<ul class="options-bar" data-filter="{{ path('flux_rss_list') }}">
+			
+		</ul>
+	</div>
+	
+	<div class="widget">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6>{{ title }}</h6>
+				<a class="btn btn-success pull-right" href="{{ path('flux_rss_create') }}" title="Ajouter un flux rss"><i class="icon-plus"></i>&nbsp;Ajouter un flux rss</a>
+				
+			</div>
+		</div>
+		
+		<div>
+
+		<div class="widget" data-role="wrapper">
+			{{ render(controller('AppCoreBundle:FluxRss:show')) }}
+		</div>
+	</div>
+	</div>
+{% endblock %}

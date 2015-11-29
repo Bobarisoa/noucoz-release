@@ -1,0 +1,3 @@
+sondages:
+     path:     /articles
+     defaults: { _controller:WebFrontBundle:HomePage:sondage }

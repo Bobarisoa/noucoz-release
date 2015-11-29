@@ -1,0 +1,46 @@
+utilisateur:
+    pattern:  /
+    defaults: { _controller: "AppCoreBundle:Utilisateur:index" }
+
+utilisateur_create:
+    pattern:  /ajouter
+    defaults: { _controller: "AppCoreBundle:Utilisateur:create" }
+
+utilisateur_edit:
+    pattern:  /{id}/modifier
+    defaults: { _controller: "AppCoreBundle:Utilisateur:edit" }
+    requirements:
+        id: \d+
+        _method: get|put
+
+utilisateur_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AppCoreBundle:Utilisateur:delete" }
+    requirements: { _method: post|get }
+
+utilisateur_username:
+    pattern:  /username
+    defaults: { _controller: "AppCoreBundle:Utilisateur:setUsername" }
+    requirements: { _method: post }
+    
+utilisateur_liste_historique:
+    pattern:  /{id}/liste-historique
+    defaults: { _controller: "AppCoreBundle:Utilisateur:listeHistorique" }
+    requirements:
+        id: \d+
+        _method: get|put
+        
+utilisateur_show_historique:
+    pattern:  /{id}/show-historique
+    defaults: { _controller: "AppCoreBundle:Utilisateur:showHistorique" }
+    requirements: { _method: post|get }
+
+
+utilisateur_premium: 
+    pattern: /premium
+    defaults: { _controller:"AppCoreBundle:Utilisateur:premium"}
+
+
+demande_utilisateur_premium:
+    pattern:   /{user}
+    defaults:  {  _controller:"AppCoreBundle:Utilisateur:editPremium"}

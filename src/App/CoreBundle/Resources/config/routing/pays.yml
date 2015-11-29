@@ -1,0 +1,23 @@
+pays:
+    path: /
+    defaults: { _controller: "AppCoreBundle:Pays:index" }
+
+pays_list:
+    pattern:  /liste
+    defaults: { _controller: "AppCoreBundle:Pays:show" }
+
+pays_create:
+    pattern:  /ajouter
+    defaults: { _controller: "AppCoreBundle:Pays:create" }
+
+pays_edit:
+    pattern:  /{id}/modifier
+    defaults: { _controller: "AppCoreBundle:Pays:edit" }
+    requirements:
+        id: \d+
+        _method: get|put
+
+pays_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AppCoreBundle:Pays:delete" }
+    requirements: { _method: post|get }

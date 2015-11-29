@@ -1,0 +1,32 @@
+articles:
+    path: /
+    defaults: { _controller: "AppCoreBundle:Articles:index" }
+
+articles_list:
+    pattern:  /liste
+    defaults: { _controller: "AppCoreBundle:Articles:show" }
+
+article_voir:
+    pattern: /read/{id}
+    defaults: { _controller: "AppCoreBundle:Articles:read" }
+
+articles_create:
+    pattern:  /ajouter
+    defaults: { _controller: "AppCoreBundle:Articles:create" }
+
+articles_edit:
+    pattern:  /{id}/modifier
+    defaults: { _controller: "AppCoreBundle:Articles:edit" }
+    requirements:
+        id: \d+
+        _method: get|put
+
+articles_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AppCoreBundle:Articles:delete" }
+    requirements: { _method: post|get }
+
+article_translate:
+    pattern: /translate
+    defaults: { _controller: "AppCoreBundle:Articles:translate" }
+

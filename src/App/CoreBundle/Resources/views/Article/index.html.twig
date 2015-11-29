@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="widget">
+			<ul class="options-bar" data-filter="{{ path('article_list') }}">
+
+		</ul>
+	</div>
+
+	<div class="widget">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<h6>{{ title }}</h6>
+				<a class="btn btn-success pull-right" href="{{ path('article_create') }}" title="Ajouter un article"><i class="icon-plus"></i>&nbsp;Ajouter un article</a>
+
+			</div>
+		</div>
+
+		<div>
+		<!--<h5 class="widget-name">
+			<i class="icon-th"></i>Résultats
+		</h5>-->
+		<div class="widget" data-role="wrapper">
+			{{ render(controller('AppCoreBundle:Article:show')) }}
+		</div>
+	</div>
+	</div>
+{% endblock %}

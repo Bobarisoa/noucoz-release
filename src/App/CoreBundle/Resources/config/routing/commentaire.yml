@@ -1,0 +1,23 @@
+commentaire:
+    path: /
+    defaults: { _controller: "AppCoreBundle:Commentaire:index" }
+
+commentaire_list:
+    pattern:  /liste
+    defaults: { _controller: "AppCoreBundle:Commentaire:show" }
+
+commentaire_create:
+    pattern:  /ajouter
+    defaults: { _controller: "AppCoreBundle:Commentaire:create" }
+
+commentaire_edit:
+    pattern:  /{id}/modifier
+    defaults: { _controller: "AppCoreBundle:Commentaire:edit" }
+    requirements:
+        id: \d+
+        _method: get|put
+
+commentaire_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AppCoreBundle:Commentaire:delete" }
+    requirements: { _method: post|get }

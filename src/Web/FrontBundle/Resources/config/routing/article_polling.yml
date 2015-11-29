@@ -1,0 +1,3 @@
+article_polling:
+    path: /article/polling
+    defaults: { _controller: "WebFrontBundle:HomePage:articlePolling" }
