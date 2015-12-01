@@ -28,6 +28,8 @@ sondage:
     resource: "@WebFrontBundle/Resources/config/routing/sondage.yml"
     prefix: /sondage    
 
-
+article_noucoz:
+    resource: "@WebFrontBundle/Resources/config/routing/article.yml"
+    prefix: /article
 
 

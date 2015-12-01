@@ -1,8 +1,10 @@
 article_top_news:
      path:     /top-news
-     defaults: { _controller: WebFrontBundle :Article: topNews }
+     defaults: { _controller: WebFrontBundle:Article:topNews }
 
-
+article_recherche:
+     path:     /recherche
+     defaults: { _controller: WebFrontBundle:Article:rechercheArticle }
      
 
 

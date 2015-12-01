@@ -448,19 +448,19 @@
                 <hr/>
                 <section id="content">
                     {# Render article from db #}
-                    {% for article in data %}
+                    {% for article in pagination %}
                         <article class="box-new">
-                            {% if article.image is not empty  %}
-                                <p ><img src="{{ article.image }}" style="width:197px" height="170px" alt=""/></p>
+                            {% if article.photo is not empty  %}
+                                <p ><img src="{{ article.photo }}" style="width:197px" height="170px" alt=""/></p>
                             {% else %}
                                 <p ><img src="http://noucoz.com/web/template/img/pas_photo.png" style="width:197px" height="170px" alt=""/></p>
                             {% endif %}
-                            <p class="conts" style="height:50px">{{ article.title | upper }}</p><br/><br/>
-                            <p class="conts"><a href="{{ article.link }}">{{ article.description }}</a><br/><br/>
-                            <p class="conts">Source : <a href="{{ article.link }}" title="{{ article.link }}">{{ article.link }}</a> </p><br/>
-                            <p class="conts">Contenu: {{ article.description }}</p><br/><br/>
+                            <p class="conts" style="height:50px">{{ article.titre | upper }}</p><br/><br/>
+                            <p class="conts"><a href="{{ article.source }}">{{ article.contenu }}</a><br/><br/>
+                            <p class="conts">Source : <a href="{{ article.source }}" title="{{ article.source }}">{{ article.source }}</a> </p><br/>
+                            <p class="conts">Contenu: {{ article.contenu }}</p><br/><br/>
 
-                            <p class="conts">Auteur: {{ article.title }}</p><br/>
+                            <p class="conts">Auteur: {{ article.auteur }}</p><br/>
                                 {#Notification: <span class="badge">{{ article.notification }}</span><br/>#}
                                 {#Classe: {{ article.classe.titre }}</p>#}
                                 {#<p class="date">Pays:  {{ article.country.name }}<br/>#}
@@ -473,6 +473,9 @@
 
                 </section>
             </div>
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
         </div>
 
         {#<div class="pagination" style="margin-left:5em">#}
