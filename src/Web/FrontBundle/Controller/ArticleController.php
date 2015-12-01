@@ -62,5 +62,31 @@ class ArticleController extends Controller
         ));
 
     }
+    public function hastagAction($key){
+        $request = $this->get('request');
+        $em = $this->getDoctrine()->getManager();
+
+
+        $countries = $em->getRepository('WebFrontBundle:Country')->findAll();
+        $categorie = $em->getRepository('WebFrontBundle:Categorie')->findAll();
+
+        $entity  = new Utilisateur();
+        $form = $this->createForm(new UtilisateurType(), $entity);
+
+        $article = $em->createQuery('SELECT a FROM WebFrontBundle:Articles a WHERE a.titre like :keyWord or a.contenu like :keyWord')
+            ->setParameter('keyWord', mysql_real_escape_string('%#' . $key . ' %'));
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($article,$request->query->getInt('page', 1) ,12);
+
+        return $this->render('WebFrontBundle:HomePage:result.html.twig', array(
+            'countries' => $countries,
+            'headline' => 'Membres',
+            'title'    => 'Ajouter un membre',
+            'entity'   => $entity,
+            'pagination' => $pagination,
+            'categorie' => $categorie,
+            'form'     => $form->createView()
+        ));
+    }
 
 }

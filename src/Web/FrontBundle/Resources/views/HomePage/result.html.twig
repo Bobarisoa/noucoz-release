@@ -455,8 +455,8 @@
                             {% else %}
                                 <p ><img src="http://noucoz.com/web/template/img/pas_photo.png" style="width:197px" height="170px" alt=""/></p>
                             {% endif %}
-                            <p class="conts" style="height:50px">{{ article.titre | upper }}</p><br/><br/>
-                            <p class="conts"><a href="{{ article.source }}">{{ article.contenu }}</a><br/><br/>
+                            <p class="conts hastag" style="height:50px">{{ article.titre | upper }}</p><br/><br/>
+                            <p class="conts hastag"><a href="{{ article.source }}">{{ article.contenu }}</a><br/><br/>
                             <p class="conts">Source : <a href="{{ article.source }}" title="{{ article.source }}">{{ article.source }}</a> </p><br/>
                             <p class="conts">Contenu: {{ article.contenu }}</p><br/><br/>
 
@@ -470,7 +470,6 @@
                             {#{{ include('WebFrontBundle:helper:socialButtons.html.twig') }}#}
                         </article>
                     {% endfor %}
-
                 </section>
             </div>
         </div>
@@ -512,9 +511,21 @@
                 margin_bottom: 50,
                 single_column_breakpoint: 700
             });
+            jQuery('.hastag').each(function () {
+                var content = jQuery(this).html();
+                var arrayContent = content.split(' ');
+                for(i=0; i< arrayContent.length; i++){
+                    var hastag =arrayContent[i];
+                    if(hastag.substring(0,1) == '#'){
+                        arrayContent[i] = '<a href="{{ path('article_hastag') }}/'+ hastag.substring(1, hastag.length) +'">'+hastag+'</a>';
+                    }
+                }
+                var newContent = arrayContent.join(' ');
+                console.log(newContent);
+                jQuery(this).html(newContent);
+            })
+
         });
-
-
         ;(function ($, window, document, undefined) {
             var pluginName = 'pinterest_grid',
                     defaults = {

@@ -5,7 +5,8 @@ article_top_news:
 article_recherche:
      path:     /recherche
      defaults: { _controller: WebFrontBundle:Article:rechercheArticle }
-     
-
+article_hastag:
+     path:     /hastag/{key}
+     defaults: { _controller: WebFrontBundle:Article:hastag, key: null }
 
 
