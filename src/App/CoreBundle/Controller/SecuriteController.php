@@ -33,7 +33,11 @@ class SecuriteController extends Controller implements KillTheBootInterface
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
         
-        return $this->render('AppCoreBundle:Securite:login.html.twig', array(
+//        return $this->render('AppCoreBundle:Securite:login.html.twig', array(
+//            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+//            'error'         => $error,
+//        ));
+        return $this->render('WebFrontBundle:HomePage:index.html.twig', array(
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
         ));

@@ -298,26 +298,23 @@ class MembreController extends Controller
             
             $rsm = new ResultSetMapping();
 			$sql = "SELECT username, password FROM utilisateur where username = '".$username."'
-            AND password = '".$pass_transf."'";
+                    AND password = '".$pass_transf."'";
 			$rsm = new \Doctrine\ORM\Query\ResultSetMapping;
 			$rsm->addScalarResult('username', 'username');
             $rsm->addScalarResult('password', 'password');
 			$result = $em
 			->createNativeQuery($sql, $rsm)
 			->getScalarResult();
-            
+
             $messages = "login ou mot de passe incorrecte !";
             $info = "Veuillez retaper votre login et mot de passe pour de raison de sécurité";
             if(empty($result)){
-               return $this->render('WebFrontBundle:Inscription:connexion_echec.html.twig', array('messages' => $messages)); 
+               return $this->render('WebFrontBundle:HomePage:index.html.twig', array('messages' => $messages));
             }
             else{
-                return $this->render('WebFrontBundle:Inscription:connexion.html.twig',array('profil' => $profil, 'info' => $info ));  
+                return $this->render('WebFrontBundle:Inscription:connexion.html.twig',array('profil' => $profil, 'info' => $info ));
             }
-            
-           
-            
-            
+
             /*if($username == $profil->getUsername()){
                 echo 'OK';
             }

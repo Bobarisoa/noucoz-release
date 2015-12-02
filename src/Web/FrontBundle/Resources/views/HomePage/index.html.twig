@@ -1,5 +1,4 @@
 {% extends '::layout.html.twig' %}
-s
 {% block body %}
 
     <div id="wrapper">
@@ -11,18 +10,16 @@ s
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form class="cd-form">
+
+                <form class="cd-form" action="{{ path('check_login') }}" method="post">
                     <p class="fieldset">
                         <label class="image-replace cd-email" for="signin-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Erreur</span>
+                        <input class="full-width has-padding has-border" name="_username" id="username" type="email" placeholder="Identifiant" required="required">
                     </p>
 
                     <p class="fieldset">
                         <label class="image-replace cd-password" for="signin-password">Mot de passe</label>
-                        <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Mot de passe">
-                        <a href="#0" class="hide-password">Cacher</a>
-                        <span class="cd-error-message">Erreur</span>
+                        <input class="full-width has-padding has-border" name="password" id="password" type="password" placeholder="Mot de passe" required="required">
                     </p>
 
                     <p class="fieldset">
@@ -31,7 +28,7 @@ s
                     </p>
 
                     <p class="fieldset">
-                        <input class="full-width" type="submit" value="Login">
+                        <input class="full-width" id="btn_login" type="submit" value="Login">
                     </p>
                 </form>
 
@@ -116,7 +113,7 @@ s
         <div class="menu-top-right" style="margin-right:10em;">
             {#{{ path('login')}}#}
             <ul>
-                <li id="link-conncect"><a href="#1" title="Connexion" style="color:#000;font-size:1em;text-transform:uppercase;" class="cd-signup">Se connecter </a></li>
+                <li id="link-conncect"><a href="{{ path('login')}}" title="Connexion" style="color:#000;font-size:1em;text-transform:uppercase;" class="cd-signup">Se connecter </a></li>
                 <li id="link-inscription" ><a  href="#0" title="Inscription" style="color:#000;font-size:1em;text-transform:uppercase;" class="cd-signup">S'inscrire</a></li>
             </ul>
         </div>
@@ -452,6 +449,7 @@ s
                     <span>
                 </div>
                 <hr/>
+                {% if data is defined %}
                 <section id="content">
                     {# Render article from db #}
                     {% for article in data %}
@@ -476,7 +474,38 @@ s
                             {#{{ include('WebFrontBundle:helper:socialButtons.html.twig') }}#}
                         </article>
                     {% endfor %}
+                {% endif %}
+                {% if pagination  %}
+                    <section id="content">
+                        {# Render article from db #}
+                        {% for article in pagination %}
+                            <article class="box-new">
 
+                                {% if article.photo is not empty  %}
+                                    {% if article.type == 2 %}
+                                        <p ><img src="http://noucoz.com/web/template/img/{{article.photo }}" style="width:197px" height="170px" alt=""/></p>
+
+                                    {% else  %}
+                                        <p ><img src="{{ article.photo }}" style="width:197px" height="170px" alt=""/></p>
+                                    {% endif %}
+                                {% else %}
+                                    <p ><img src="http://noucoz.com/web/template/img/pas_photo.png" style="width:197px" height="170px" alt=""/></p>
+                                {% endif %}
+
+                                <p class="conts" style="height:50px">Titre: {{ article.titre }}</p><br/>
+                                <p class="conts">Source: <a href="http://www.lemonde.fr" title="http://www.lemonde.fr">{{ article.source }}</a><br/>
+                                    Contenu: {{ article.contenu }}<br/><br/>
+
+                                    Auteur: {{ article.auteur }}<br/>
+                                    Classe: {{ article.classe.titre }}</p>
+                                <p class="date">Pays:  {{ article.country.name }}<br/>
+                                    {{ article.create }}</p>
+
+                                <span class="label label-default"><a href="{{ path('article_voir', {'id':article.id}) }}" style="margin-left:0.1em;color:#fff">Afficher la suite ...</a></span>
+                            </article>
+                        {% endfor %}
+                    </section>
+                {% endif %}
                 </section>
             </div>
         </div>
@@ -678,6 +707,9 @@ s
          }
          });*/
         //}, 30000);
+        $('#btn_login').click(function(){
+           alert('mandalo ato');
+        });
     </script>
 
 {% endblock %}

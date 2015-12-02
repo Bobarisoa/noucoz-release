@@ -363,7 +363,6 @@ class HomePageController extends Controller
 
         return $this->render('WebFrontBundle:HomePage:index.html.twig', array(
             'countries' => $countries,
-
             'headline' => 'Membres',
             'title'    => 'Ajouter un membre',
             'entity'   => $entity,
